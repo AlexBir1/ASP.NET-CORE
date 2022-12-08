@@ -1,0 +1,41 @@
+﻿@model WebHostel.Models.ordered_productsViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="EditOProduct" method="post" asp-route-id="@Model.id">
+<div class="card">
+            <div class="card-header">
+                <h3>Изменить данные о заказанном продукте</h3>
+            </div>
+            <div class="card-body">
+                <div class="card-group">
+                    <label>Название: </label>
+                    <input asp-for="title" name="title" placeholder="Название" value="@Model.title" />
+                </div>
+                <div class="card-group">
+                    <label>Тип: </label>
+                    <input asp-for="specie" name="specie" placeholder="Тип" value="@Model.specie" />
+                </div>
+                <div class="card-group">
+                    <label>Дата заказа: </label>
+                    <input asp-for="order_date" name="order_date" value="@Model.order_date" />
+                </div>
+                <div class="card-group">
+                    <label>Колиество: </label>
+                    <input asp-for="quantity" name="quantity" placeholder="Колиество" value="@Model.quantity" />
+                </div>
+                <div class="card-group">
+                    <label>Отель: </label>
+                    <input asp-for="hostel_name" name="hostel_name" placeholder="Отель" value="@Model.hostel_name" />
+                </div>
+                <div class="card-group">
+                    <label>Цена: </label>
+                    <input asp-for="cost" name="cost" placeholder="Цена" value="@Model.cost" />
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-success" type="submit">Изменить</button>
+            </div>
+        </div>
+        </form>

@@ -1,0 +1,37 @@
+﻿@using WebHostel.Domain.Enum
+@model WebHostel.Models.Cafe_employeesViewModel
+@using WebHostel.Domain.Functions
+<div class="card">
+    <div class="card-header">
+        <label>@Model.fullname</label>
+    </div>
+    <div class="card-body">
+        <div class="card-columns">
+            <label>Номер телефона: @Model.phone</label>
+        </div>
+        <div class="card-columns">
+            <label>Должность: @EnumExtension.GetDisplayName(Model.rank)</label>
+        </div>
+        <div class="card-columns">
+            <label>
+                Ваше кафе: <a asp-controller="Cafe" asp-action="GetCafe" asp-route-title="@Model.cafe_name">
+                    @Model.cafe_name
+                </a>
+            </label>
+        </div>
+        <div class="card-columns">
+            <label>Логин: @Model.login</label>
+        </div>
+    </div>
+    <div class="card-footer">
+        @if (User.IsInRole("employee") || User.IsInRole("admin"))
+        {
+            <a asp-controller="Cafe_employees" asp-action="EditCEmployee" asp-route-id="@Model.id">Редактировать</a>
+        }
+        @if (User.IsInRole("admin"))
+        {
+            <a asp-controller="Cafe_employees" asp-action="DeleteCEmployee" asp-route-id="@Model.id">Удалить</a>
+        }
+    </div>
+</div>
+<br />

@@ -1,0 +1,47 @@
+﻿@using System.Security.Claims
+@model WebHostel.Models.wordersViewModel
+
+<form asp-action="CreateWOrder" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h3>Добавление заказа на склад</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <label>Товар: </label>
+                <input asp-for="title" name="title" placeholder="Товар"  />
+            </div>
+            <div class="card-text">
+                <label>Тип товара: </label>
+                <input asp-for="specie" name="specie" placeholder="Тип"  />
+            </div>
+            <div class="card-text">
+                <label>Цена: </label>
+                <input asp-for="cost" name="cost" placeholder="Цена"  />
+            </div>
+            <div class="card-text">
+                <label>Количество: </label>
+                <input asp-for="quantity" name="quantity" placeholder="Кол-во"  />
+            </div>
+            <div class="card-text">
+                <label>Дата заказа: </label>
+                <input asp-for="order_date" name="order_date" type="date"  />
+            </div>
+            <div class="card-text">
+                <label>Сотрудник, сделавший заказ: </label>
+                <input asp-for="employee_num" name="employee_num" placeholder="Номер телефона"  value="@User.FindFirst(ClaimTypes.MobilePhone).Value"/>
+            </div>
+            <div class="card-text">
+                <label>Производитель: </label>
+                <input asp-for="manufactorer_name" name="manufactorer_name" placeholder="Производитель"  />
+            </div>
+            <div class="card-text">
+                <label>Склад: </label>
+                <input asp-for="wirehouse_name" name="wirehouse_name" placeholder="Склад"  />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">Добавить</button>
+        </div>
+    </div>
+</form>

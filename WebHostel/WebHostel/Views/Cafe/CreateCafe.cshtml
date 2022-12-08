@@ -1,0 +1,27 @@
+﻿@using System.Security.Claims
+@model WebHostel.Models.CafeViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="CreateCafe">
+    <div class="card">
+        <div class="card-header">
+            <label>Создание кафе</label>
+        </div>
+        <br />
+        <div class="card-body">
+        <div class="card-group">
+            <input asp-for="title" name="title" placeholder="Название"/>
+        </div>
+        <br />
+        <div class="card-group">
+            <input asp-for="hostel_name" name="hostel_name" placeholder="Отель" />
+        </div>
+        <br />
+        </div>
+        <div class="card-footer">
+            <button type="submit">Создать кафе</button>
+        </div>
+    </div>
+</form> 

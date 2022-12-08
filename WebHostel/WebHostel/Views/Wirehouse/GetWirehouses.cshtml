@@ -1,0 +1,34 @@
+﻿@model List<WebHostel.Models.WirehouseViewModel>
+
+@if (User.IsInRole("admin"))
+{
+    <div class="nav-item">
+        <a class="btn btn-primary" asp-action="CreateWirehouse">Новый склад</a>
+    </div>
+}
+@if (Model == null || Model.Count() == 0)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if (Model != null && Model.Count() != 0)
+    @foreach (var w in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <h3>@w.title</h3>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    <label>Макс. кол-во товаров: @w.maxProducts</label>
+                </div>
+                <div class="card-text">
+                    <label>Отель: @w.hostel_name</label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-warning" asp-action="EditWirehouse" asp-route-id="@w.id">Изменить</a>
+                <label> || </label>
+                <a class="btn btn-danger" asp-action="DeleteWirehouse" asp-route-id="@w.id">Удалить</a>
+            </div>
+        </div>
+    }

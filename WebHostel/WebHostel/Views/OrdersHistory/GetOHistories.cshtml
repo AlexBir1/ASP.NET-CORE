@@ -1,0 +1,45 @@
+﻿@model List<WebHostel.Models.orders_historyViewModel>
+@if (User.IsInRole("admin"))
+{
+    <div class="nav-item">
+        <a asp-action="CreateOHistory">Добавить комнату</a>
+    </div>
+}
+@if (Model == null)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if (Model != null)
+    @foreach (var oh in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <h3>@oh.title</h3>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    <label>Количество: @oh.quantity</label>
+                </div>
+                <div class="card-text">
+                    <label>Цена: @oh.cost</label>
+                </div>
+                <div class="card-text">
+                    <label>Дата заказа: @oh.order_date.ToString("dd.MM.yyyy")</label>
+                </div>
+                <div class="card-text">
+                    <label>Заказ сделан по номеру: @oh.customer_phone</label>
+                </div>
+                <div class="card-text">
+                    <label>Заказ принят по номеру: @oh.employee_phone</label>
+                </div>
+                <div class="card-text">
+                    <label>Отель: @oh.hostel_name</label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-warning" asp-action="EditOHistory" asp-route-id="@oh.id">Изменить</a>
+                <label> || </label>
+                <a class="btn btn-danger" asp-action="DeleteOHistory" asp-route-id="@oh.id">Удалить</a>
+            </div>
+        </div>
+    }

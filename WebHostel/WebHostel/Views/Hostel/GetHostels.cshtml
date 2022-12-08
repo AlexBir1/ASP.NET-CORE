@@ -1,0 +1,25 @@
+﻿@model List<WebHostel.Models.HostelViewModel>
+@if (Model == null)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if (Model != null)
+{
+    @foreach (var h in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <label>ОТЕЛЬ</label>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Название: @h.title</label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-text"><a class="btn btn-info" class="btn btn-success" asp-controller="Hostel" asp-action="GetHostel" asp-route-title="@h.title">Подробности</a></div>
+            </div>
+        </div>
+        <br />
+    }
+}

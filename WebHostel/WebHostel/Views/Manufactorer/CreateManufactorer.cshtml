@@ -1,0 +1,33 @@
+﻿@model WebHostel.Models.ManufactorerViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="CreateManufactorer" method="post">
+<div class="card">
+        <div class="card-header">
+            <h3>Добавить производителя</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-group">
+               <label>Наименование: </label>
+               <input asp-for="title" name="title" placeholder="Наименование" />
+            </div>
+            <div class="card-group">
+               <label>Номер телефона: </label>
+               <input asp-for="phone" name="phone" placeholder="Номер телефона" />
+            </div>
+            <div class="card-group">
+               <label>Адрес: </label>
+               <input asp-for="address" name="address" placeholder="Адрес" />
+            </div>
+            <div class="card-group">
+                <label>Страна: </label>
+                <input asp-for="country" name="country" placeholder="Страна" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">Добавить</button>
+        </div>
+    </div>
+    </form>

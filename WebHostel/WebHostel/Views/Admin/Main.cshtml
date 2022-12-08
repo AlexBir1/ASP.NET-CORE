@@ -1,0 +1,72 @@
+﻿@if (User.IsInRole("admin"))
+{
+    <div class="text-center">
+        <h4>Кнопка "Перейти" перебросит на страницу выбранной категории</h4>
+    </div>
+    <div class="card-group text-center">
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Кафе</label>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-primary" asp-area="" asp-controller="Cafe" asp-action="GetCafes">Перейти</a>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Склады</label>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-primary" asp-area="" asp-controller="Wirehouse" asp-action="GetWirehouses">Перейти</a>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Комнаты</label>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-primary" asp-area="" asp-controller="Rooms" asp-action="GetRoomss">Перейти</a>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Отели</label>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-primary" asp-area="" asp-controller="Hostel" asp-action="GetHostels">Перейти</a>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+    </div>
+}

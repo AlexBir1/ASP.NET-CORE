@@ -1,0 +1,33 @@
+﻿@using System.Security.Claims
+@model WebHostel.Models.OrdersViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="CreateOrder" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h3>Добавить данных заказа</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <label>Номер клиента: </label>
+                <input asp-for="customer_num" name="customer_num" placeholder="Номер клиента" value="@User.FindFirst(ClaimTypes.MobilePhone).Value"/>
+            </div>
+            <div class="card-text">
+                <label>Название: </label>
+                <input asp-for="title" name="title" placeholder="Название" />
+            </div>
+            <div class="card-text">
+                <label>Количество: </label>
+                <input asp-for="quantity" name="quantity" placeholder="Количество" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success">Добавить</button>
+        </div>
+    </div>
+</form>
+
+
+

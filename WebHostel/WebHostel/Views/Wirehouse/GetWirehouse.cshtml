@@ -1,0 +1,23 @@
+﻿@model WebHostel.Models.WirehouseViewModel
+
+<div class="card">
+    <div class="card-header">
+        <h3>@Model.title</h3>
+    </div>
+    <div class="card-body">
+        <div class="card-text">
+            <label>Макс. кол-во товаров: @Model.maxProducts</label>
+        </div>
+        <div class="card-text">
+            <label>Отель: @Model.hostel_name</label>
+        </div>
+    </div>
+    <div class="card-footer">
+        @if (User.IsInRole("admin"))
+        {
+            <a class="btn btn-warning" asp-action="EditWirehouse" asp-route-id="@Model.id">Изменить</a>
+            <label> || </label>
+            <a class="btn btn-danger" asp-action="DeleteWirehouse" asp-route-id="@Model.id">Удалить</a>
+        }
+    </div>
+</div>

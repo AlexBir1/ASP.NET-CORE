@@ -1,0 +1,55 @@
+﻿@using System.Security.Claims
+
+@model List<WebHostel.Models.RoomsViewModel>
+@if (User.IsInRole("admin"))
+{
+    <div class="nav-item">
+        <a asp-action="CreateRooms">Добавить комнату</a>
+    </div>
+}
+@if (Model == null)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if (Model != null)
+    @foreach (var r in Model)
+    {
+        @if (r.hostel_name == User.FindFirst(ClaimTypes.UserData).Value)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <label>Комната: @r.num</label>
+                </div>
+                <div class="card-body">
+                    <div class="card-columns">
+                        <label>Тип: @r.rank</label>
+                    </div>
+                    <div class="card-columns">
+                        <label>Цена за сутки: @r.CostPerDay</label>
+                    </div>
+                    <div class="card-columns">
+                        <label>Максимум человек: @r.maxPeople</label>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    @if (User.IsInRole("admin"))
+                    {
+                        <a class="btn btn-danger" asp-action="DeleteRooms" asp-route-id="@r.id">Удалить</a>
+                        <label>  ||  </label>
+                        <a class="btn btn-warning" asp-action="EditRooms" asp-route-id="@r.id">Редактировать</a>
+                    }
+                    @if (User.IsInRole("customer"))
+                    {
+                        <a class="btn btn-info" asp-controller="Booking" asp-action="CreateBooking" asp-route-room_num="@r.num">Забронировать</a>
+                    }
+                    @if (User.IsInRole("employee") && User.FindFirst(ClaimTypes.Role).Value == "Registrator")
+                    {
+                        <a class="btn btn-info" asp-controller="Checks" asp-action="CreateChecks" asp-route-rooms_num="@r.num" asp-route-isBooked="0">Выбрать</a>
+                        <label>  ||  </label>
+                        <a class="btn btn-primary" asp-controller="Booking" asp-action="CreateBooking" asp-route-room_num="@r.num">Добавить бронь</a>
+                    }
+                </div>
+            </div>
+            <br />
+        }
+}

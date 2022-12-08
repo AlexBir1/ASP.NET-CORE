@@ -1,0 +1,40 @@
+﻿@using WebHostel.Domain.Enum
+@model WebHostel.Models.RoomsViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="EditRooms" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h3>Изменение информации о комнате</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <label>Номер: </label>
+                <input asp-for="num" name="num" placeholder="Номер" value="@Model.num" />
+            </div>
+             <div class="card-text">
+                <label>Уровень комфорта: </label>
+                <select asp-for="rank" name="rank" asp-items="@Html.GetEnumSelectList<RoomRanks>()">
+                    <option value="@Model.rank">--Выбрать--</option>
+                </select>
+            </div>
+             <div class="card-text">
+                <label>Стоимость за сутки: </label>
+                <input asp-for="CostPerDay" name="CostPerDay" placeholder="Стоимость" value="@Model.CostPerDay" />
+            </div>
+             <div class="card-text">
+                <label>Максимум человек: </label>
+                <input asp-for="maxPeople" name="maxPeople" placeholder="Кол-во" value="@Model.maxPeople" />
+            </div>
+             <div class="card-text">
+                <label>Отель: </label>
+                <input asp-for="hostel_name" name="hostel_name" placeholder="Отель" value="@Model.hostel_name" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">Изменить</button>
+        </div>
+    </div>
+</form>

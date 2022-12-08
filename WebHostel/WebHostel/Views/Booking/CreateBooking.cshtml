@@ -1,0 +1,45 @@
+﻿@using System.Security.Claims
+@model WebHostel.Models.BookingViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="CreateBooking">
+    <div class="card">
+        <div class="card-header">
+            <label>Создание брони</label>
+        </div>
+        <br />
+        <div class="card-body">
+            <div class="card-group">
+                <label>Номер комнаты: </label>
+                <input asp-for="room_num" name="room_num" placeholder="Номер комнаты" value="@Model.room_num" />
+            </div>
+            <br />
+            <div class="card-group">
+                <label>На какую дату: </label>
+                <input asp-for="book_date" name="book_date" type="date" asp-format="{0:yyyy-MM-dd}" placeholder="На какую дату" />
+            </div>
+            <br />
+            @if (User.IsInRole("customer"))
+            {
+                <div class="card-group">
+                    <label>Номер клиента: </label>
+                    <input asp-for="customer_num" name="customer_num" placeholder="Номер клиента" value="@User.FindFirst(ClaimTypes.MobilePhone).Value" />
+                </div>
+                <br />
+            }
+            @if (User.IsInRole("employee") && User.FindFirst(ClaimTypes.Role).Value == "Registrator")
+            {
+                <div class="card-group">
+                    <label>Номер клиента: </label>
+                    <input asp-for="customer_num" name="customer_num" placeholder="Номер клиента" />
+                </div>
+                <br />
+            }
+        </div>
+        <div class="card-footer">
+            <button type="submit">Создать бронь</button>
+        </div>
+    </div>
+</form>

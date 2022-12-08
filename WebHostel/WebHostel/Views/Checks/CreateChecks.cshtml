@@ -1,0 +1,50 @@
+﻿@using WebHostel.Domain.Enum
+@model WebHostel.Models.ChecksViewModel    
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form method="post" asp-controller="Checks" asp-action="CreateChecks" asp-route-rooms_num="@Model.rooms_num">
+    <div class="card col-md-8">
+
+        <div class="card-header text-center"><label>Заезд в комнату</label></div>
+        <div class="card-body">
+            <div class="card-columns">
+                <label>Номер комнаты: @Model.rooms_num</label>
+            </div>
+            <br />
+            <div class="card-columns">
+                <input asp-for="checkin_date" name="checkin_date" type="date"  placeholder="Дата заезда "/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <input asp-for="checkout_date" name="checkout_date" type="date"  placeholder="Дата выезда "/>
+            </div>
+            <div class="card-columns">
+                <input asp-for="customer_num" name="customer_num" value="@Model.customer_num" placeholder="Номер клиента "/>
+            </div>
+
+            <br />
+            <div class="card-columns">
+                <label>Бронь\не бронь: </label>
+                 <select asp-for="isBooked" name="isBooked" asp-items="@Html.GetEnumSelectList<BookingStatuses>()">
+                    <option value="@Model.isBooked">---Выбрать---</option>
+                </select>
+            </div>
+
+            <br />
+            <div class="card-columns">
+                <label>Приватно\свободно: </label>
+                 <select asp-for="isPrivate" name="isPrivate" asp-items="@Html.GetEnumSelectList<PrivacyRStatuses>()">
+                    <option value="@Model.isPrivate">---Выбрать---</option>
+                </select>
+            </div>
+            <br />
+            <div class="card-columns">
+                <button class="btn btn-success" type="submit">Заехать!</button>
+            </div>
+            <br />
+            <div class="card-footer text-center"><label>Обязательно проверьте введённые данные!</label></div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,85 @@
+﻿@using System.Security.Claims
+@model List<WebHostel.Models.DishesViewModel>
+
+@if(User.IsInRole("admin") || User.IsInRole("employee"))
+{
+    <a class="btn btn-info" asp-action="CreateDish">Добавить блюдо</a>
+}
+
+@if (Model == null)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if (Model != null)
+    @foreach (var d in Model)
+    {
+        @if (User.IsInRole("customer"))
+        {
+            <div class="card">
+                <div class="card-header">
+                    <h3>Блюдо: @d.title</h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-group">
+                        <label>В составе: @d.ingreds</label>
+                    </div>
+                    <div class="card-group">
+                        <label>Цена: @d.cost</label>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-success" asp-controller="Orders" asp-action="CreateOrder"
+           asp-route-title="@d.title" asp-route-cafe_name="@d.cafe_name">Выбрать</a>
+                </div>
+            </div>
+            <br />
+        }
+        @if (User.FindFirst(ClaimTypes.UserData).Value == d.cafe_name && !User.IsInRole("admin"))
+        {
+            <div class="card">
+                <div class="card-header">
+                    <h3>Блюдо: @d.title</h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-group">
+                        <label>В составе: @d.ingreds</label>
+                    </div>
+                    <div class="card-group">
+                        <label>Цена: @d.cost</label>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-warning" asp-controller="Dishes" asp-action="EditDish"
+           asp-route-id="@d.id">Изменить</a>
+                    <label> || </label>
+                    <a class="btn btn-danger" asp-controller="Dishes" asp-action="DeleteDish"
+           asp-route-id="@d.id">Удалить</a>
+                </div>
+            </div>
+            <br />
+        }
+        @if (User.IsInRole("admin"))
+        {
+            <div class="card">
+                <div class="card-header">
+                    <h3>Блюдо: @d.title</h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-group">
+                        <label>В составе: @d.ingreds</label>
+                    </div>
+                    <div class="card-group">
+                        <label>Цена: @d.cost</label>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-warning" asp-controller="Dishess" asp-action="EditDish"
+           asp-route-id="@d.id">Изменить</a>
+                    <label> || </label>
+                    <a class="btn btn-danger" asp-controller="Dishes" asp-action="DeleteDish"
+           asp-route-id="@d.id">Удалить</a>
+                </div>
+            </div>
+            <br />
+        }
+    }

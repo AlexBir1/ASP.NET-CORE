@@ -1,0 +1,42 @@
+﻿@model WebHostel.Models.Services_historyViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+
+<form asp-action="CreateSHistory">
+    <div class="card">
+        <div class="card-header">
+            <h3>Добавление истории об услуге</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <label>Услуга: </label>
+                <input asp-for="stitle" name="stitle" placeholder="Название"  />
+            </div>
+            <div class="card-text">
+                <label>Номер клиента: </label>
+                <input asp-for="customer_num" name="customer_num" placeholder="Номер клиента"  />
+            </div>
+            <div class="card-text">
+                <label>Номер сотрудника: </label>
+                <input asp-for="employee_num" name="employee_num" placeholder="Номер сотрудника"  />
+            </div>
+            <div class="card-text">
+                <label>Цена: </label>
+                <input asp-for="cost" name="cost" placeholder="Цена"  />
+            </div>
+            <div class="card-text">
+                <label>Дата заказа услуги: </label>
+                <input asp-for="service_date" name="service_date" type="date"  />
+            </div>
+            <div class="card-text">
+                <label>Отель: </label>
+                <input asp-for="hostel_name" name="hostel_name" placeholder="Название"  />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">Добавить</button>
+        </div>
+    </div>
+</form>

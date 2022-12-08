@@ -1,0 +1,33 @@
+﻿@model WebHostel.Models.ManufactorerViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="EditManufactorer" method="post">
+<div class="card">
+        <div class="card-header">
+            <h3>Изменить данные производителя</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-group">
+               <label>Наименование: </label>
+               <input asp-for="title" name="title" placeholder="Наименование" value="@Model.title" />
+            </div>
+            <div class="card-group">
+               <label>Номер телефона: </label>
+               <input asp-for="phone" name="phone" placeholder="Номер телефона" value="@Model.phone" />
+            </div>
+            <div class="card-group">
+               <label>Адрес: </label>
+               <input asp-for="address" name="address" placeholder="Адрес" value="@Model.address" />
+            </div>
+            <div class="card-group">
+                <label>Страна: </label>
+                <input asp-for="country" name="country" placeholder="Страна" value="@Model.country" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">Изменить</button>
+        </div>
+    </div>
+    </form>

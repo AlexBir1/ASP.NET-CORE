@@ -1,0 +1,41 @@
+﻿@using System.Security.Claims
+@model List<WebHostel.Models.ServicesViewModel>
+@if (Model == null)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if (Model != null)
+{
+    @foreach (var s in Model)
+    {
+        @if (s.hostel_name == User.FindFirst(ClaimTypes.UserData).Value)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <label>Услуга: @s.title</label>
+                </div>
+                <div class="card-body">
+                    <div class="card-columns">
+                        <label>Описание: @s.info</label>
+                    </div>
+                    <div class="card-columns">
+                        <label>Стоимость: @s.cost.ToString()</label>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    @if (User.IsInRole("admin"))
+                    {
+                        <a class="btn btn-danger" asp-action="DeleteService" asp-route-id="@s.id">Удалить</a>
+                        <a class="btn btn-warning" asp-action="EditService" asp-route-id="@s.id">Редактировать</a>
+                    }
+                    @if (User.IsInRole("customer"))
+                    {
+                        <a class="btn btn-success" asp-controller="ChosenServices" asp-action="CreateCService" asp-route-title="@s.title" asp-route-customer_num="@User.FindFirst(ClaimTypes.MobilePhone).Value" asp-route-hostel_name="@User.FindFirst(ClaimTypes.UserData).Value">Выбрать</a>
+                    }
+                </div>
+            </div>
+            <br />
+        }
+    }
+}
+

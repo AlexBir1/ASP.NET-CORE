@@ -1,0 +1,38 @@
+﻿
+@model WebHostel.Models.CustomersViewModel
+@{
+    ViewData["Title"] = "Пользователь";
+}
+
+<div class="card col-md-12">
+    <div class="card-header col-md-8"><label>Информация о пользователе</label></div>
+    <div class="card-body">
+        <div class="card-title">
+            <label>@Model.fullname</label>
+        </div>
+        <div class="card-columns">
+            <label>Номер телефона: @Model.phone</label>
+        </div>
+        <div class="card-columns">
+            <label>Ваш отель: </label>
+            <a asp-controller="Hostel" asp-action="GetHostel" asp-route-title="@Model.hostel_name">@Model.hostel_name</a>
+        </div>
+        <br />
+        <div class="card-columns">
+            <label>Логин(Email): @Model.login</label>
+        </div>
+        @if (User.IsInRole("customer") || User.IsInRole("admin"))
+        {
+        <div class="card-footer">
+            <a asp-action="EditCustomers"
+               asp-route-fullname="@Model.fullname"
+               asp-route-phone="@Model.phone"
+               asp-route-hostel_name="@Model.hostel_name"
+               asp-route-login="@Model.login"
+               asp-route-id="@Model.id">
+                Изменить данные
+            </a>
+        </div>
+        }
+    </div>
+</div>

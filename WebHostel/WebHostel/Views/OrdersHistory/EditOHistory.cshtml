@@ -1,0 +1,46 @@
+﻿@model WebHostel.Models.orders_historyViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="EditOhistory" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h3>Изменение заказа в истории</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <label>Название: </label>
+                <input asp-for="title" name="title" placeholder="Название" value="@Model.title" />
+            </div>
+            <div class="card-text">
+                <label>Количество: </label>
+                <input asp-for="quantity" name="quantity" placeholder="Количество" value="@Model.quantity" />
+            </div>
+            <div class="card-text">
+                <label>Цена: </label>
+                <input asp-for="cost" name="cost" placeholder="Цена" value="@Model.cost" />
+            </div>
+            <div class="card-text">
+                <label>Дата заказа: </label>
+                <input asp-for="order_date" name="order_date" type="date" />
+                
+            </div>
+            <div class="card-text">
+                <label>Заказ сделан по номеру: </label>
+                <input asp-for="customer_phone" name="customer_phone" placeholder="Номер клиента" value="@Model.customer_phone" />
+            </div>
+            <div class="card-text">
+                <label>Заказ принят по номеру: </label>
+                <input asp-for="employee_phone" name="employee_phone" placeholder="Номер сотрудника" value="@Model.employee_phone" />
+            </div>
+            <div class="card-text">
+                <label>Отель: </label>
+                <input asp-for="hostel_name" name="hostel_name" placeholder="Отель" value="@Model.hostel_name" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">Изменить</button>
+        </div>
+    </div>
+</form>

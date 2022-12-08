@@ -1,0 +1,33 @@
+﻿ @model WebHostel.Models.DishesViewModel
+
+ <div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+ <form asp-action="EditDish">
+<div class="card">
+        <div class="card-header">
+            <h3>Изменить блюдо</h3>
+        </div>
+        <div class="card-body">
+             <div class="card-group">
+                <label>В составе: </label>
+                <input type="text" asp-for="title" name="title" placeholder="Состав" value="@Model.title"/>
+            </div>
+            <div class="card-group">
+                <label>В составе: </label>
+                <textarea asp-for="ingreds" name="ingreds" placeholder="Ингредиенты" value="@Model.ingreds"></textarea>
+            </div>
+            <div class="card-group">
+                <label>Цена: </label>
+                <input type="number" asp-for="cost" name="cost" placeholder="Цена" value="@Model.cost"/>
+            </div>
+            <div class="card-group">
+                <label>Подаётся в кафе: </label>
+                <input type="text" asp-for="cafe_name" name="cafe_name" placeholder="Кафе" value="@Model.cafe_name"/>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">Изменить</button>
+        </div>
+    </div>
+    </form>

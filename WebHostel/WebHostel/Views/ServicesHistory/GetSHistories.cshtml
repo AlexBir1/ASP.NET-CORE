@@ -1,0 +1,43 @@
+﻿@model List<WebHostel.Models.Services_historyViewModel>
+
+@if (User.IsInRole("admin"))
+{
+    <div class="nav-item">
+        <a class="btn btn-primary" asp-action="CreateSHistory">Новая история услуги</a>
+    </div>
+}
+@if (Model == null || Model.Count() == 0)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if (Model != null && Model.Count() != 0)
+    @foreach(var sh in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <h3>Услуга: @sh.stitle</h3>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    <label>Номер клиента: @sh.customer_num</label>
+                </div>
+                <div class="card-text">
+                    <label>Номер сотрудника: @sh.employee_num</label>
+                </div>
+                <div class="card-text">
+                    <label>Цена: @sh.cost</label>
+                </div>
+                <div class="card-text">
+                    <label>Дата заказа услуги: @sh.service_date.ToString("dd.MM.yyyy")</label>
+                </div>
+                <div class="card-text">
+                    <label>Отель: @sh.hostel_name</label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a asp-action="EditSHistory" asp-route-id="@sh.id">Изменить</a>
+                <label> || </label>
+                <a asp-action="DeleteSHistory" asp-route-id="@sh.id">Удалить</a>
+            </div>
+        </div>
+    }

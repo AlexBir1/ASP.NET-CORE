@@ -1,0 +1,33 @@
+﻿@model WebHostel.Models.HostelViewModel
+@{
+    ViewData["Title"] = "Отель";
+}
+<div class="text-center page-item">
+    <h1 class="display-4">Отель в базе</h1>
+    <div class="card">
+        <div class="card-header">
+            <label>@Model.title</label>
+        </div>
+        <div class="card-body">
+            <div class="card-columns text-md-center">
+                <label>Адрес: @Model.location</label>
+            </div>
+            <div class="card-columns text-md-center">
+                <label>Информация: @Model.info</label>
+            </div>
+        </div>
+        @if (User.IsInRole("admin"))
+        {
+            <div class="card-footer">
+                <a asp-action="EditHostel" asp-route-id="@Model.id"
+               asp-route-title="@Model.title"
+               asp-route-info="@Model.info"
+               asp-route-location="@Model.location">
+                    Изменить
+                </a>
+            </div>
+            <br />
+        }
+    </div>
+    <br />
+</div>

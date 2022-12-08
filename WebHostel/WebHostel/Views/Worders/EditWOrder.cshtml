@@ -1,0 +1,46 @@
+﻿@model WebHostel.Models.wordersViewModel
+
+<form asp-action="EditWOrder" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h3>Изменение данных заказа на склад</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <label>Товар: </label>
+                <input asp-for="title" name="title" placeholder="Товар" value="@Model.title" />
+            </div>
+            <div class="card-text">
+                <label>Тип товара: </label>
+                <input asp-for="specie" name="specie" placeholder="Тип" value="@Model.specie" />
+            </div>
+            <div class="card-text">
+                <label>Цена: </label>
+                <input asp-for="cost" name="cost" placeholder="Цена" value="@Model.cost" />
+            </div>
+            <div class="card-text">
+                <label>Количество: </label>
+                <input asp-for="quantity" name="quantity" placeholder="Кол-во" value="@Model.quantity" />
+            </div>
+            <div class="card-text">
+                <label>Дата заказа: </label>
+                <input asp-for="order_date" name="order_date" type="date" value="@Model.order_date" />
+            </div>
+            <div class="card-text">
+                <label>Сотрудник, сделавший заказ: </label>
+                <input asp-for="employee_num" name="employee_num" placeholder="Номер телефона" value="@Model.employee_num" />
+            </div>
+            <div class="card-text">
+                <label>Производитель: </label>
+                <input asp-for="manufactorer_name" name="manufactorer_name" placeholder="Производитель" value="@Model.manufactorer_name" />
+            </div>
+            <div class="card-text">
+                <label>Склад: </label>
+                <input asp-for="wirehouse_name" name="wirehouse_name" placeholder="Склад" value="@Model.wirehouse_name" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">Изменить</button>
+        </div>
+    </div>
+</form>

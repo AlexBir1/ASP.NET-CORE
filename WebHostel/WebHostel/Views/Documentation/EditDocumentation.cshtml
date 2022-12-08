@@ -1,0 +1,44 @@
+﻿@using WebHostel.Domain.Enum
+@model WebHostel.Models.DocumentationViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="EditDocumentation" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h3>Изменение пользовательской документации</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-group">
+                <label>ФИО: </label>
+                <input asp-for="fullname" name="fullname" placeholder="ФИО" value="@Model.fullname"/>
+            </div>
+            <div class="card-group">
+                <label>Номер телефона: </label>
+                <input asp-for="phone" name="phone" placeholder="Номер телефона" value="@Model.phone"/>
+            </div>
+            <div class="card-group">
+                <label>Дата регистрации: </label>
+                <input asp-for="regdate" name="regdate" type="date" value="@Model.regdate"/>
+            </div>
+            <div class="card-group">
+                <label>Статус: </label>
+                <select asp-for="status" name="status" asp-items="@Html.GetEnumSelectList<UserStatus>()">
+                    <option value="@Model.status">--Выбрать--</option>
+                </select>
+            </div>
+            <div class="card-group">
+                <label>Фулл-статус: </label>
+                <input asp-for="fullstatus" name="fullstatus" placeholder="Фулл-статус" value="@Model.fullstatus"/>
+            </div>
+            <div class="card-group">
+                <label>Отель регистрации: </label>
+                <input asp-for="hostel_name" name="hostel_name" placeholder="Отель регистрации" value="@Model.hostel_name"/>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">Изменить</button>
+        </div>
+    </div>
+</form>

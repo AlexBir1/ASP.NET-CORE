@@ -1,0 +1,29 @@
+﻿
+@model WebHostel.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-controller="Employees" asp-action="Log_in">
+    <div class="card col-md-12 text-center">
+        <div class="card-header text-center"><label>Вход в кабинет (работник-отель)</label></div>
+        <div class="card-body">
+            <div class="card-columns">
+                <label>Логин: </label>
+                <input asp-for="login" name="login" placeholder="Логин "/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <label>Пароль: </label>
+                <input asp-for="password" name="password" placeholder="Пароль "/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <button class="btn btn-info" type="submit">Войти в кабинет</button>
+            </div>
+        </div>
+        </div>
+</form>

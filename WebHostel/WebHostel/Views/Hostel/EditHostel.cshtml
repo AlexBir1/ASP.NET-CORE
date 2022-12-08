@@ -1,0 +1,29 @@
+﻿@model WebHostel.Models.HostelViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="EditHostel" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h3>Изменение данных отеля</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-group">
+                <label>Название: </label>
+                <input asp-for="title" name="title" placeholder="Название" value="@Model.title" />
+            </div>
+            <div class="card-group">
+                <label>Адрес: </label>
+                <input asp-for="location" name="location" placeholder="Адрес" value="@Model.location" />
+            </div>
+            <div class="card-group">
+                <label>Описание: </label>
+                <input asp-for="info" name="info" placeholder="Описание" value="@Model.info" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">Изменить</button>
+        </div>
+    </div>
+</form>

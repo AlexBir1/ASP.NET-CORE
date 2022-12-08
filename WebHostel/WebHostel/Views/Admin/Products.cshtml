@@ -1,0 +1,56 @@
+﻿@if (User.IsInRole("admin"))
+{
+    <div class="text-center">
+        <h4>Кнопка "Перейти" перебросит на страницу выбранной категории</h4>
+    </div>
+    <div class="card-group text-center">
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Товары на складах</label>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-info" asp-controller="Products" asp-action="GetProducts">Перейти</a>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Производители</label>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-info" asp-controller="Manufactorer" asp-action="GetManufactorers">Перейти</a>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+                <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Заказы на склады</label>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-info" asp-controller="Worders" asp-action="GetWOrders">Перейти</a>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+    </div>
+}

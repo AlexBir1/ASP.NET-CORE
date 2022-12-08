@@ -1,0 +1,30 @@
+﻿@using WebHostel.Domain.Enum
+@model WebHostel.Models.EmployeesViewModel
+@using WebHostel.Domain.Functions
+<div class="card">
+        <div class="card-header">
+           <label>@Model.fullname</label>
+        </div>
+        <div class="card-body">
+            <div class="card-columns">
+                <label>Номер телефона: @Model.phone</label>
+            </div>
+            <div class="card-columns">
+                <label>Должность: @EnumExtension.GetDisplayName(Model.rank)</label>
+            </div>
+            <div class="card-columns">
+                <label>Ваш отель: <a asp-controller="Hostel" asp-action="GetHostel" asp-route-title="@Model.hostel_name">
+                @Model.hostel_name</a></label>
+            </div>
+            <div class="card-columns">
+                <label>Логин: @Model.login</label>
+            </div>
+        </div>
+        <div class="card-footer">
+                @if (User.IsInRole("employee") || User.IsInRole("admin")) 
+                {
+                    <a asp-controller="Employees" asp-action="EditEmployee" asp-route-id="@Model.id" asp-route-isBooked="0">Редактировать</a>
+                }
+        </div>
+    </div>
+<br />

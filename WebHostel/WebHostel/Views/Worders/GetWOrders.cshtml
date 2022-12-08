@@ -1,0 +1,142 @@
+﻿@using System.Security.Claims
+@using WebHostel.Domain.Enum
+@using WebHostel.Domain.Functions
+@model List<WebHostel.Models.wordersViewModel>
+
+@if (User.IsInRole("admin") || User.IsInRole("employee"))
+{
+    <div class="nav-item">
+        <a class="btn btn-primary" asp-action="CreateWOrder">Новый заказ на складе</a>
+    </div>
+}
+@if (Model == null)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if (Model != null)
+    @foreach (var w in Model)
+    {
+        <div class="card-group">
+            @if (User.FindFirst(ClaimTypes.UserData).Value == w.wirehouse_name && w.status == WOStatuses.not_ready)
+            {
+                <div class="card">
+                    <div class="card-header">
+                        <h3>@w.title</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <label>Тип: @w.specie</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Цена: @w.cost</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Количество: @w.quantity</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Дата заказа: @w.order_date.ToString("dd.MM.yyyy")</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Сотрудник, сделавший заказ: @w.employee_num</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Производитель: @w.manufactorer_name</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Статус: @EnumExtension.GetDisplayName(w.status)</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Склад: @w.wirehouse_name</label>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-info" asp-action="UpdateOrderWStatus" asp-route-title="@w.title" asp-route-wirehouse_name="@w.wirehouse_name">Статус: выполнено</a>
+                        <label> || </label>
+                        <a class="btn btn-warning" asp-action="EditWOrder" asp-route-id="@w.id">Изменить</a>
+                        <label> || </label>
+                        <a class="btn btn-danger" asp-action="DeleteWOrder" asp-route-id="@w.id">Удалить</a>
+                    </div>
+                </div>
+                <br />
+            }
+            @if (User.FindFirst(ClaimTypes.UserData).Value == w.wirehouse_name && w.status == WOStatuses.ready)
+            {
+                <div class="card">
+                    <div class="card-header">
+                        <h3>@w.title</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <label>Тип: @w.specie</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Цена: @w.cost</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Количество: @w.quantity</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Дата заказа: @w.order_date.ToString("dd.MM.yyyy")</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Сотрудник, сделавший заказ: @w.employee_num</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Производитель: @w.manufactorer_name</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Статус: @EnumExtension.GetDisplayName(w.status)</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Склад: @w.wirehouse_name</label>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-warning" asp-action="EditWOrder" asp-route-id="@w.id">Изменить</a>
+                        <label> || </label>
+                        <a class="btn btn-danger" asp-action="DeleteWOrder" asp-route-id="@w.id">Удалить</a>
+                    </div>
+                </div>
+            }
+            }
+        </div>
+        @if (User.IsInRole("admin"))
+        {
+            <div class="card">
+                <div class="card-header">
+                    <h3>@w.title</h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <label>Тип: @w.specie</label>
+                    </div>
+                    <div class="card-text">
+                        <label>Цена: @w.cost</label>
+                    </div>
+                    <div class="card-text">
+                        <label>Количество: @w.quantity</label>
+                    </div>
+                    <div class="card-text">
+                        <label>Дата заказа: @w.order_date.ToString("dd.MM.yyyy")</label>
+                    </div>
+                    <div class="card-text">
+                        <label>Сотрудник, сделавший заказ: @w.employee_num</label>
+                    </div>
+                    <div class="card-text">
+                        <label>Производитель: @w.manufactorer_name</label>
+                    </div>
+                    <div class="card-text">
+                        <label>Статус: @EnumExtension.GetDisplayName(w.status)</label>
+                    </div>
+                    <div class="card-text">
+                        <label>Склад: @w.wirehouse_name</label>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-warning" asp-action="EditWOrder" asp-route-id="@w.id">Изменить</a>
+                    <label> || </label>
+                <a class="btn btn-danger" asp-action="DeleteWOrder" asp-route-id="@w.id">Удалить</a>
+            </div>
+        </div>
+        }
+    }

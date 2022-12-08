@@ -1,0 +1,54 @@
+﻿@using WebHostel.Domain.Enum
+@model WebHostel.Models.Checks_historyViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="EditChecks">
+<div class="card">
+    <div class="card-header">
+        <label>Изменение истории проживания</label>
+    </div>
+    <div class="card-body">
+        <div class="card-group">
+            <label>Номер комнаты: </label>
+            <input asp-for="roomNum" name="roomNum" placeholder="Номер комнаты" value="@Model.roomNum"/>
+        </div>
+        <div class="card-group">
+            <label>Дата заезда: </label>
+            <input asp-for="checkin_date" name="checkin_date" type="date" placeholder="Дата заезда" value="@Model.checkin_date"/>
+        </div>
+        <div class="card-group">
+            <label>Дата выезда: </label>
+            <input asp-for="checkout_date" name="checkout_date" type="date" placeholder="Дата выезда" value="@Model.checkout_date"/>
+        </div>
+        <div class="card-group">
+            <label>Номер посетителя: </label>
+            <input asp-for="customer_phone" name="customer_phone" placeholder="Номер посетителя" value="@Model.customer_phone"/>
+        </div>
+        <div class="card-group">
+            <label>Итоговая цена: </label>
+            <input asp-for="cost" name="cost" placeholder="Итоговая цена" value="@Model.cost"/>
+        </div>
+        <div class="card-group">
+            <label>Приватность: </label>
+            <select asp-for="wasPrivate" name="wasPrivate" asp-items="@Html.GetEnumSelectList<PrivacyRStatuses>()">
+                    <option value="@Model.wasPrivate">--Выбрать--</option>
+                </select>
+        </div>
+        <div class="card-group">
+            <label>Бронирование: </label>
+            <select asp-for="wasBooked" name="wasBooked" asp-items="@Html.GetEnumSelectList<BookingStatuses>()">
+                    <option value="@Model.wasBooked">--Выбрать--</option>
+                </select>
+        </div>
+        <div class="card-group">
+            <label>Отель: </label>
+            <input asp-for="hostel_name" name="hostel_name" placeholder="Отель" value="@Model.hostel_name"/>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-success" type="submit">Изменить данные</button>
+    </div>
+</div>
+</form>

@@ -1,0 +1,39 @@
+﻿@model List<WebHostel.Models.ManufactorerViewModel>
+
+@if (User.IsInRole("admin") || User.IsInRole("employee"))
+{
+    <div class="nav-item">
+        <a class="btn btn-primary" asp-action="CreateManufactorer">Добавить производителя</a>
+    </div>
+}
+@if (Model == null)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if (Model != null)
+{
+    @foreach(var m in Model)
+    {
+    <div class="card">
+        <div class="card-header">
+            <h3>@m.title</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-group">
+               <label>Номер телефона: @m.phone</label>
+            </div>
+            <div class="card-group">
+               <label>Адрес: @m.address</label>
+            </div>
+            <div class="card-group">
+                <label>Страна: @m.country</label>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-warning" asp-action="EditManufactorer" asp-route-id="@m.id">Изменить</a>
+            <label> || </label>
+            <a class="btn btn-danger" asp-action="DeleteManufactorer" asp-route-id="@m.id">Удалить</a>
+        </div>
+    </div>
+    }
+}

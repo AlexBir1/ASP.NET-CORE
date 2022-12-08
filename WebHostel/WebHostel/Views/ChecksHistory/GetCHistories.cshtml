@@ -1,0 +1,45 @@
+﻿@model List<WebHostel.Models.Checks_historyViewModel>
+@if (Model.Count() == 0)
+{
+    <h2>Список пуст!</h2>
+}
+
+@if (Model.Count() != 0)
+    @foreach (var chh in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <label>Комната №@chh.roomNum</label>
+            </div>
+            <div class="card-body">
+                <div class="card-group">
+                    <label>Дата заезда: @chh.checkin_date.ToString("dd.MM.yyyy")</label>
+                </div>
+                <div class="card-group">
+                    <label>Дата выезда: @chh.checkout_date.ToString("dd.MM.yyyy")</label>
+                </div>
+                <div class="card-group">
+                    <label>Номер посетителя: @chh.customer_phone</label>
+                </div>
+                <div class="card-group">
+                    <label>Итоговая цена: @chh.cost</label>
+                </div>
+                <div class="card-group">
+                    <label>Приватность: @chh.wasPrivate</label>
+                </div>
+                <div class="card-group">
+                    <label>Бронирование: @chh.wasBooked</label>
+                </div>
+                <div class="card-group">
+                    <label>Отель: @chh.hostel_name</label>
+                </div>
+            </div>
+            <div class="card-footer">
+                @if (User.IsInRole("admin"))
+                {
+                    <a class="btn btn-warning" asp-action="EditChecks" asp-route-id="@chh.id">Изменить</a>
+                }
+            </div>
+        </div>
+        <br />
+    }

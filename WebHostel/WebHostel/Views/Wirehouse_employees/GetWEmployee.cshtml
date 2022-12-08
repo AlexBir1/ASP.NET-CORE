@@ -1,0 +1,30 @@
+﻿@using WebHostel.Domain.Enum
+@using WebHostel.Domain.Functions
+@model WebHostel.Models.Wirehouse_employeesViewModel    
+<div class="card">
+        <div class="card-header">
+           <label>@Model.fullname</label>
+        </div>
+        <div class="card-body">
+            <div class="card-columns">
+                <label>Номер телефона: @Model.phone</label>
+            </div>
+            <div class="card-columns">
+                <label>Должность: @EnumExtension.GetDisplayName(Model.rank)</label>
+            </div>
+            <div class="card-columns">
+                <label>Ваш склад: <a asp-controller="Wirehouse" asp-action="GetWirehouse" asp-route-title="@Model.wirehouse_name">
+                @Model.wirehouse_name</a></label>
+            </div>
+            <div class="card-columns">
+                <label>Логин: @Model.login</label>
+            </div>
+        </div>
+        <div class="card-footer">
+                @if (User.IsInRole("employee") || User.IsInRole("admin")) 
+                {
+                    <a class="btn btn-warning" asp-controller="Wirehouse_employees" asp-action="EditWEmployee" asp-route-id="@Model.id" >Редактировать</a>
+                }
+        </div>
+    </div>
+<br />

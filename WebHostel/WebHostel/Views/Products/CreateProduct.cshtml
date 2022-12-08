@@ -1,0 +1,42 @@
+﻿@model WebHostel.Models.ProductsViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-warning"></div>
+</div>
+<form asp-action="CreateProduct" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h3>Добавить продукт на склад</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <label>Название: </label>
+                <input asp-for="title" name="title" placeholder="Название"  />
+            </div>
+            <br />
+            <div class="card-text">
+                <label>Вид продукта: </label>
+                <input asp-for="specie" name="specie" placeholder="Вид" />
+            </div>
+            <br />
+            <div class="card-text">
+                <label>Количество: </label>
+                <input asp-for="quantity" name="quantity" placeholder="Кол-во"  />
+            </div>
+            <br />
+            <div class="card-text">
+                <label>Цена за 1 шт: </label>
+                <input asp-for="cost" name="cost" placeholder="Цена"  />
+            </div>
+            <br />
+            <div class="card-text">
+                <label>Склад: </label>
+                <input asp-for="wirehouse_name" name="wirehouse_name" placeholder="Склад"  />
+            </div>
+            <br />
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-info" type="submit">Добавить</button>
+        </div>
+    </div>
+</form>

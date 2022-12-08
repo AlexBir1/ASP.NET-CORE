@@ -1,0 +1,72 @@
+﻿@if (User.IsInRole("admin"))
+{
+    <div class="text-center">
+        <h4>Кнопка "Перейти" перебросит на страницу с юзерами</h4>
+    </div>
+    <div class="card-group text-center">
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Клиенты</label>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-primary" asp-controller="Customers" asp-action="GetCustomerss">Перейти</a>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Работники кафе</label>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-success" asp-controller="Cafe_employees" asp-action="GetCEmployees">Перейти</a>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Работники отеля</label>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-info" asp-controller="Employees" asp-action="GetEmployees">Перейти</a>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <label>Работники склада</label>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-warning" asp-controller="Wirehouse_employees" asp-action="GetWEmployees">Перейти</a>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+    </div>
+}

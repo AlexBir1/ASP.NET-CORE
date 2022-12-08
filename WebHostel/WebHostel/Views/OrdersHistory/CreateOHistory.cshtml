@@ -1,0 +1,45 @@
+﻿@model WebHostel.Models.orders_historyViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-action="CreateOhistory" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h3>Добавление заказа в историю</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <label>Название: </label>
+                <input asp-for="title" name="title" placeholder="Название" />
+            </div>
+            <div class="card-text">
+                <label>Количество: </label>
+                <input asp-for="quantity" name="quantity" placeholder="Количество" />
+            </div>
+            <div class="card-text">
+                <label>Цена: </label>
+                <input asp-for="cost" name="cost" placeholder="Цена" />
+            </div>
+            <div class="card-text">
+                <label>Дата заказа: </label>
+                <input asp-for="order_date" name="order_date" type="date" />
+            </div>
+            <div class="card-text">
+                <label>Заказ сделан по номеру: </label>
+                <input asp-for="customer_phone" name="customer_phone" placeholder="Номер клиента" />
+            </div>
+            <div class="card-text">
+                <label>Заказ принят по номеру: </label>
+                <input asp-for="employee_phone" name="employee_phone" placeholder="Номер сотрудника" />
+            </div>
+            <div class="card-text">
+                <label>Отель: </label>
+                <input asp-for="hostel_name" name="hostel_name" placeholder="Отель" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type="submit">Добавить</button>
+        </div>
+    </div>
+</form>

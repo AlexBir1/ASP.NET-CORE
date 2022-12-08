@@ -1,0 +1,61 @@
+﻿@using WebHostel.Domain.Enum
+
+@model WebHostel.Models.CERegisterViewModel
+@{
+    ViewData["Title"] = "Изменение данных";
+}
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-controller="Cafe_employees" asp-action="EditCEmployee">
+    <div class="card col-md-8">
+        <div class="card-header text-center"><label>Изменение данных работника кафе</label></div>
+        <div class="card-body">
+            <div class="card-columns">
+                <label>ФИО: </label>
+                <input asp-for="fullname" name="fullname" placeholder="ФИО: " value="@Model.fullname"/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <label>Номер телефона: </label>
+                <input asp-for="phone" name="phone" placeholder="Номер телефона: " value="@Model.phone"/>
+            </div>
+            <br />
+            <div class="card-columns">
+                 Должность:
+                <select asp-for="rank" name="rank" asp-items="@Html.GetEnumSelectList<CEmployeeRanks>()">
+                    <option value="@Model.rank">Выбрать</option>
+                </select>
+            </div>
+            <br />
+            <div class="card-columns">
+                Статус:
+                <select asp-for="status" name="status" asp-items="@Html.GetEnumSelectList<UserStatus>()">
+                    <option value="@Model.status">Выбрать</option>
+                </select>
+            </div>
+            <br />
+            <div class="card-columns">
+                <label>Кафе: </label>
+                <input asp-for="cafe_name" name="cafe_name" placeholder="Кафе: " value="@Model.cafe_name"/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <label>Логин: </label>
+                <input asp-for="login" name="login" placeholder="Логин: " value="@Model.login"/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <label>Пароль: </label>
+                <input asp-for="password" name="password" placeholder="Пароль: " value="@Model.password"/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <button type="submit">Изменить данные</button>
+            </div>
+            <br />
+            <div class="card-footer text-center"><label>Обязательно проверьте введённые данные!</label></div>
+        </div>
+        </div>
+</form>

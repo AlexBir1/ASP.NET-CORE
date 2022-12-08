@@ -1,0 +1,30 @@
+﻿@model List<WebHostel.Models.Wirehouse_employeesViewModel>
+<div class="text-right">
+<a class="btn btn-warning" asp-controller="Wirehouse_employees" asp-action="Register">Добавить работника склада</a>
+</div>
+@if (Model == null)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if(Model != null)
+@foreach (var e in Model)
+{
+    <div class="card">
+        <div class="card-header">
+           <label> @e.fullname</label>
+        </div>
+        <div class="card-body">
+            <div class="card-columns">
+                <label>Номер телефона: @e.phone</label>
+            </div>
+        </div>
+        <div class="card-footer">
+                <a class="btn btn-danger" asp-action="DeleteWEmployee" asp-route-id="@e.id">Удалить</a>
+                <label> || </label>
+                <a class="btn btn-warning" asp-action="EditWEmployee" asp-route-id="@e.id">Редактировать</a>
+                <label> || </label>
+                <a class="btn btn-info" asp-action="GetWEmployee" asp-route-id="@e.id">Информация</a>
+        </div>
+    </div>
+<br />
+}

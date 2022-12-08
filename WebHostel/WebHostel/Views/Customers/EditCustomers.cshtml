@@ -1,0 +1,44 @@
+﻿
+@model WebHostel.Models.CustomersViewModel
+
+<div class="nav-item">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+<form asp-controller="Customers" asp-action="EditCustomers" asp-route-id="@Model.id">
+    <div class="card col-md-8">
+        <div class="card-header text-center"><label>Редактирование данных пользователя</label></div>
+        <div class="card-body">
+
+            <div class="card-columns">
+                <label>ФИО: </label>
+                <input asp-for="fullname" name="fullname" value="@Model.fullname" placeholder="ФИО: "/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <label>Номер телефона: </label>
+                <input asp-for="phone" name="phone" value="@Model.phone" placeholder="Номер телефона: "/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <label>Отель: </label>
+                <input asp-for="hostel_name" name="hostel_name" value="@Model.hostel_name" placeholder="Выбранный отель: "/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <label>Логин: </label>
+                <input asp-for="login" name="login" value="@Model.login" placeholder="Логин: "/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <label>Пароль: </label>
+                <input asp-for="password" name="password" value="@Model.password" placeholder="Пароль: "/>
+            </div>
+            <br />
+            <div class="card-columns">
+                <button type="submit">Изменить</button>
+            </div>
+            <br />
+            <div class="card-footer text-center"><label>Обязательно проверьте введённые данные!</label></div>
+        </div>
+    </div>
+</form>

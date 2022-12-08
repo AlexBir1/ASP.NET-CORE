@@ -1,0 +1,30 @@
+﻿@model List<WebHostel.Models.Cafe_employeesViewModel>
+<div class="text-right">
+<a class="btn btn-success" asp-controller="Cafe_employees" asp-action="Register">Добавить работника кафе</a>
+</div>
+@if (Model == null)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if(Model != null)
+@foreach (var e in Model)
+{
+    <div class="card">
+        <div class="card-header">
+           <label> @e.fullname</label>
+        </div>
+        <div class="card-body">
+            <div class="card-columns">
+                <label>Номер телефона: @e.phone</label>
+            </div>
+        </div>
+        <div class="card-footer">
+                <a asp-action="DeleteCEmployee" asp-route-id="@e.id">Удалить</a>
+                <label> || </label>
+                <a asp-action="EditCEmployee" asp-route-id="@e.id">Редактировать</a>
+                <label> || </label>
+                <a asp-action="GetCEmployee" asp-route-id="@e.id">Информация</a>
+        </div>
+    </div>
+<br />
+}

@@ -1,0 +1,127 @@
+﻿@using System.Security.Claims
+@using WebHostel.Domain.Functions
+@model List<WebHostel.Models.OrdersViewModel>
+
+<div class="nav-item">
+    <a class="btn btn-info" asp-action="CreateOrder">Создать заказ</a>
+</div>
+
+@if(Model == null)
+{
+        <div asp-validation-summary="All" class="text-danger"></div>
+}
+
+@if(Model != null)
+@if (Model.Count() != 0)
+{
+    <div class="card-group">
+        @foreach (var o in Model)
+        {
+            @if (User.IsInRole("employee"))
+            {
+                @if (@o.status == WebHostel.Domain.Enum.OrdersStatuses.set)
+                {
+                    <div class="card">
+                        <div class="card-header">
+                            <label>Заказ в списке</label>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                @o.title
+                            </div>
+                            <div class="card-text">
+                                <label>Номер телефона клиента: @o.customer_num</label>
+                            </div>
+                            <div class="card-text">
+                                <label>Цена: @o.cost</label>
+                            </div>
+                            <div class="card-text">
+                                <label>Количество: @o.quantity</label>
+                            </div>
+                            <div class="card-text">
+                                <label>Номер телефона работника: @o.cafe_employees_num</label>
+                            </div>
+                            <div class="card-text">
+                                <label>Статус: @EnumExtension.GetDisplayName(o.status)</label>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-success" asp-action="UpdateStatusEOrder" asp-route-id="@o.id">На готовку</a>
+                            <label> || </label>
+                            <a class="btn btn-danger" asp-action="DeleteOrder" asp-route-id="@o.id">Удалить</a>
+                        </div>
+                    </div>
+                    <br />
+                }
+                @if (o.status == WebHostel.Domain.Enum.OrdersStatuses.making)
+                {
+                    <div class="card">
+                        <div class="card-header">
+                            <label>Заказ готовится</label>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                @o.title
+                            </div>
+                            <div class="card-text">
+                                <label>Номер телефона клиента: @o.customer_num</label>
+                            </div>
+                            <div class="card-text">
+                                <label>Цена: @o.cost</label>
+                            </div>
+                            <div class="card-text">
+                                <label>Количество: @o.quantity</label>
+                            </div>
+                            <div class="card-text">
+                                <label>Номер телефона работника: @o.cafe_employees_num</label>
+                            </div>
+                            <div class="card-text">
+                                <label>Статус: @EnumExtension.GetDisplayName(o.status)</label>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                    <br />
+                }
+            }
+            @if (User.FindFirst(ClaimTypes.MobilePhone).Value == o.customer_num)
+            {
+                
+                <div class="card">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            @o.title
+                        </div>
+                        <div class="card-text">
+                            <label>Номер телефона клиента: @o.customer_num</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Цена: @o.cost</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Количество: @o.quantity</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Номер телефона работника: @o.cafe_employees_num</label>
+                        </div>
+                        <div class="card-text">
+                            <label>Статус: @EnumExtension.GetDisplayName(o.status)</label>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                            @if (o.status == WebHostel.Domain.Enum.OrdersStatuses.making)
+                            {
+                                <label>Подтвердите готовность нажатием на "ГОТОВО!", после получения Вами заказа.</label>
+                                <br />
+                                <a class="btn btn-success" asp-action="UpdateStatusOrder" asp-route-id="@o.id">ГОТОВО!</a>
+                            }
+                    </div>
+                </div>
+                <br />
+            }
+        }
+    </div>
+}

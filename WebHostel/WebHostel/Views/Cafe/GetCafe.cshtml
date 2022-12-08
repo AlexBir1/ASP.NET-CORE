@@ -1,0 +1,27 @@
+﻿@model WebHostel.Models.CafeViewModel
+
+<div class="card">
+        <div class="card-header">
+            <label>Кафе при отеле</label>
+        </div>
+        <br />
+        <div class="card-body">
+            <div class="card-group">
+                <label>Название: @Model.title</label>
+            </div>
+            <br />
+            <div class="card-group">
+                <label>Отель при котором расположено кафе: @Model.hostel_name</label>
+            </div>
+            <br />
+        </div>
+        <div class="card-footer">
+            @if (User.IsInRole("admin"))
+        {
+            <a class="btn btn-warning" asp-action="EditCafe" asp-route-id="@Model.id">Изменить</a>
+            <label> || </label>
+            <a class="btn btn-danger" asp-action="DeleteCafe" asp-route-id="@Model.id">Удалить</a>
+        }
+        </div>
+    </div>
+    <br />

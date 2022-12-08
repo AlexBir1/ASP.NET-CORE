@@ -1,0 +1,38 @@
+﻿@model List<WebHostel.Models.BookingViewModel>
+
+@if (Model == null)
+{
+    <div asp-validation-summary="All" class="text-warning"></div>
+}
+@if (Model != null)
+{
+    @foreach (var r in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <label>Бронь комнаты</label>
+            </div>
+            <div class="card-body">
+                <div class="card-columns">
+                    <label>Номер телефона: @r.customer_num</label>
+                </div>
+                <div class="card-columns">
+                    <label>Номер комнаты: @r.room_num</label>
+                </div>
+                <div class="card-columns">
+                    <label>На какую дату: @r.book_date.ToString("dd.MM.yyyy")</label>
+                </div>
+            </div>
+            <div class="card-footer">
+                @if (User.IsInRole("employee") || User.IsInRole("admin"))
+                {
+                    <a class="btn btn-info" asp-controller="Checks" asp-action="CreateChecks" asp-route-room_num="@r.room_num" asp-route-isBooked="1" 
+                asp-route-customer_num="@r.customer_num" asp-route-checkin_date="@r.book_date.ToShortDateString()">Заселить</a>
+                }
+            </div>
+        </div>
+        <br />
+    }
+}
+
+
