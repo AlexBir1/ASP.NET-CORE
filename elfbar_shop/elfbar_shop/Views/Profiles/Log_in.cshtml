@@ -1,0 +1,34 @@
+﻿@model elfbar_shop.Models.LoginViewModel
+<div class="text-center">
+    <div asp-validation-summary="ModelOnly" class="text-danger fs-4"></div>
+</div>
+<br />
+<form asp-controller="Profiles" asp-action="Log_in">
+    <div class="card text-center">
+        <div class="card-header">
+            
+        </div>
+        <div class="card-body">
+            <div class="card-title"><h3>ВХІД ДО КАБІНЕТУ</h3></div>
+            <br />
+            <div class="card-text">
+                <label>Логін: </label> 
+                <input asp-for="login" name="login" placeholder="Логін" /><br />
+                <span asp-validation-for="login" class="text-danger text-center"></span>
+            </div>
+            <br />
+            <div class="card-text">
+                <label>Пароль: </label> 
+                <input asp-for="password" name="password" placeholder="Пароль" /><br />
+                <span asp-validation-for="password" class="text-danger text-center"></span>
+            </div>
+            <br />
+            <div class="card-text">
+                <button class="btn btn-success">Зайти до кабінету</button>
+            </div>
+        </div>
+        <div class="card-footer">
+            Переможемо бо сильні. Віримо в Україну!
+        </div>
+    </div>
+</form>

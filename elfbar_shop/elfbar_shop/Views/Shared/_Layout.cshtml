@@ -1,0 +1,104 @@
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - elfbar_shop</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/darkly.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="jquery-ui.css" />
+</head>
+<body>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="index"><i class="bi bi-house-door"></i> О.К.</a>
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Info">
+                                    <i class="bi bi-info-square"></i> ПРО САЙТ
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Profiles" asp-action="Log_in"><i class="bi bi-box-arrow-in-right"></i> ЗАЙТИ НОРМАЛЬНО ДО КЛАСУ</a>
+                            </li>
+                        </ul>
+                    </div>
+            </nav>
+        </header>
+    }
+    @if (User.Identity.IsAuthenticated)
+    {
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="index"><i class="bi bi-house-door"></i> О.К.</a>
+
+                        <ul class="navbar-nav me-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-list-ul"></i> ОСНОВНЕ</a>
+                                    <div class="dropdown-menu" style="">
+                                        <a class="dropdown-item" asp-controller="Product" asp-action="GetProducts"><i class="bi bi-archive"></i> ВСІ ТОВАРИ</a>
+                                        <a class="dropdown-item" asp-controller="Wirehouses" asp-action="GetW"><i class="bi bi-basket"></i> ВАШІ ТОВАРИ</a>
+                                        <a class="dropdown-item" asp-controller="Types" asp-action="GetTypes"><i class="bi bi-hash"></i> ТИПИ ТОВАРІВ</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" asp-controller="SellInfo" asp-action="GetSInfo"><i class="bi bi-cash-stack"></i> КАСА</a>
+                                    </div>
+                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="OrderHistory" asp-action="GetOHistories"><i class="bi bi-clock-history"></i> ІСТОРІЯ ПРОДАЖУ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Spends" asp-action="GetSpends"><i class="bi bi-box-seam"></i> МІНУС БАБКИ</a>
+                            </li>
+                           <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Info">
+                                    <i class="bi bi-info-square"></i> ПРО САЙТ
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Laugh" asp-action="GetLs">
+                                    <i class="bi bi-emoji-laughing"></i> СМІШНЯВКА
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Profiles" asp-action="GetProfile" asp-route-login="@User.FindFirst(ClaimTypes.Email).Value"><i class="bi bi-person-circle"></i> @User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Profiles" asp-action="Log_out"><i class="bi bi-door-open"></i> ВИЙТИ З КЛАСУ</a>
+                            </li>
+                        </ul>
+                </div>
+            </nav>
+        </header>
+    }
+    <div class="container">
+        <main role="main" >
+            <partial name="_Notification"/>
+            @RenderBody()
+            <br />
+            <br />
+            <br />
+        </main>
+    </div>
+
+    <footer class="border-top footer">
+        <div class="container">
+            &copy; 2022 - Олексій Козакевичка - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+           
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

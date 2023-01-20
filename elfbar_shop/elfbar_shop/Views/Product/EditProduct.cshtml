@@ -1,0 +1,46 @@
+﻿@model elfbar_shop.Models.ProductPageViewModel
+
+<br />
+<form asp-action="EditProduct" method="post" asp-route-id="@Model.Product.id">
+    <div class="card text-center">
+        <div class="card-header">
+            <label>"ТІКИ ПОТІХОНЬКУ" - Бірюша Акуратний</label>
+        </div>
+        <div class="card-body">
+            <div class=card-title>
+                <h3>ЗМІНА ДАНИХ ТОВАРУ</h3>
+            </div>
+            <br />
+            <div class="card-text">
+                <label>ТИП ТОВАРУ: </label>
+                <select asp-for="type_name" name="type_name" asp-items="@Model.ProdTypes">
+                    <option value="@Model.Product.type_name">ДЕФОЛТ: @Model.Product.type_name</option>
+                </select> 
+            </div>
+            <br />
+            <div class="card-text">
+                <label>НАЗВА: </label>
+                <input asp-for="title" name="title" placeholder="ВКАЖІТЬ НАЗВУ" value="@Model.Product.title"/><br />
+                <span asp-validation-for="title" class="text-danger text-center"></span>
+            </div>
+            <br />
+            <div class="card-text">
+                <label>КІЛЬКІСТЬ: </label>
+                <input asp-for="quantity" name="quantity" placeholder="ВКАЖІТЬ КІЛЬКІСТЬ" value="@Model.Product.quantity"/>
+            </div>
+            <br />
+            <div class="card-text">
+                <label>ЦІНА: </label>
+                <input asp-for="cost" name="cost" placeholder="ВКАЖІТЬ ЦІНА" value="@Model.Product.cost"/>
+                <span asp-validation-for="cost" class="text-danger text-center"></span>
+            </div>
+            <br />
+            <div class="card-text">
+                <button class="btn btn-warning" type="submit">ЗМІНИТИ</button>
+            </div>
+        </div>
+        <div class="card-footer">
+            <label>"СЄРИЙ???? 70 гривень...." - Влад Мармєлад</label>
+        </div>
+    </div>
+</form>

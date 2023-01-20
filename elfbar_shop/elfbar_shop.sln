@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "elfbar_shop", "elfbar_shop\elfbar_shop.csproj", "{D7ABF413-77FA-46B7-A12A-77C4582826B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "elfbar_shop_test", "elfbar_shop_test\elfbar_shop_test.csproj", "{DC4A4084-DBC9-4FF5-B29E-3BE5C911BE0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7ABF413-77FA-46B7-A12A-77C4582826B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7ABF413-77FA-46B7-A12A-77C4582826B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7ABF413-77FA-46B7-A12A-77C4582826B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7ABF413-77FA-46B7-A12A-77C4582826B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC4A4084-DBC9-4FF5-B29E-3BE5C911BE0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC4A4084-DBC9-4FF5-B29E-3BE5C911BE0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC4A4084-DBC9-4FF5-B29E-3BE5C911BE0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC4A4084-DBC9-4FF5-B29E-3BE5C911BE0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9FB68D7-7556-4987-9676-6B2218E6D1B5}
+	EndGlobalSection
+EndGlobal

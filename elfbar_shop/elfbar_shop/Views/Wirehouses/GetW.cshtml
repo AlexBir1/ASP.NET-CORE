@@ -1,0 +1,183 @@
+﻿
+
+@model elfbar_shop.Models.WirehousesPageViewModel
+
+<br />
+@if (Model.ProductList == null)
+{
+    <div class="text-center">
+        <div asp-validation-summary="ModelOnly" class="text-danger fs-4"></div>
+    </div>
+}
+<br />
+
+@if (Model.ProductList != null)
+{
+    @if (Model.GetByOwner == null)
+    {
+        <h3 class="text-center">ЗБІРНИЙ-ПРОДУКТ-ЛІСТ</h3>
+    }
+    @if (Model.GetByOwner != null)
+    {
+        <h3 class="text-center">@Model.GetByOwner.ToUpper()-ПРОДУКТ-ЛІСТ</h3>
+    }
+    <br />
+    <form asp-action="GetW" asp-route-GetByOwner="@Model.GetByOwner" asp-route-GetByType="@Model.GetByType" class="text-center">
+        <div class="card-group">
+            <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <label>Фільтрувати за власником: </label>
+
+                    </div>
+                    <div class="card-text">
+                        <select asp-for="GetByOwner" name="GetByOwner" asp-items="@Model.OwnerList">
+                            <option value="">ВИБРАТИ ВСІ</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <label>Фільтрувати за типом: </label>
+                    </div>
+                    <div class="card-text">
+                        <select asp-for="GetByType" name="GetByType" asp-items="@Model.ProdTypes">
+                            <option value="">ВИБРАТИ ВСІ</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="text-center">
+            <button class="btn btn-success" type="submit">Встановити фільтри</button>
+        </div>
+    </form>
+    @if (!Model.IsMobileDevice)
+    {
+        <br />
+        <br />
+        <div class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 500px;">
+            <table class="table border-white">
+                <thead>
+                    <tr>
+                        <th scope="col">ВЛАСНИК</th>
+                        <th scope="col">Тип товару</th>
+                        <th scope="col">Назва</th>
+                        <th scope="col">Кількість</th>
+                        <th scope="col">Ціна</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var p in Model.ProductList)
+                    {
+                        <tr>
+                            <th scope="row">@p.owner_alias</th>
+                            <td>@p.type_name</td>
+                            <td>@p.title</td>
+                            <td>@p.quantity</td>
+                            <td>@p.cost</td>
+                            <td>
+                                @if (User.Identity.Name == p.owner_alias)
+                                {
+                                    <div id="PlaceHolderHere"></div>
+                                    <div class="dropdown bg">
+                                        <a class="dropdown-toggle btn btn-success" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-list-ul"></i> МЕНЮ</a>
+                                        <div class="dropdown-menu" style="">
+                                            <button class="dropdown-item"
+                                    type="button" data-toggle="ajax-modal" data-target="#createOHistory" data-url="@Url.Action("CreateOHistory","OrderHistory",
+                                        new OrderHistoryViewModel {
+                                            product_type = p.type_name,
+                                            product_name = p.title,
+                                            seller_alias = p.owner_alias,
+                                            cost = p.cost,
+                                            order_date = DateTime.Today
+                                        })">
+                                                <i class="bi bi-check2-circle"></i> НА ПРОДАЖ
+                                            </button>
+                                            <a asp-controller="Wirehouses" asp-action="EditW" class="dropdown-item bg-warning" asp-route-id="@p.id" asp-route-isAllEdit=1><i class="bi bi-pencil-square"></i> ЗМІНА КІЛЬКОСТІ</a>
+                                            <div class="dropdown-divider"></div>
+                                            <label>@p.type_name @p.title</label>
+                                        </div>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    
+                </tbody>
+
+            </table>
+        </div>
+    }
+    <br />
+    @if (Model.IsMobileDevice)
+    {
+        <div class="card">
+            <div class="card-header"></div>
+        <div class="card-body">
+        <div class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 500px;">
+            @foreach (var p in Model.ProductList)
+            {
+                <div class="accordion" id="accordionExample_@p.id">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading_@p.id">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse_@p.id" aria-expanded="false" aria-controls="flush-collapse_@p.id">
+                                ТОВАР: @p.type_name @p.title
+                            </button>
+                        </h2>
+                        <div id="flush-collapse_@p.id" class="accordion-collapse collapse" aria-labelledby="flush-heading_@p.id" data-bs-parent="#accordionExample_@p.id">
+                            <div class="accordion-body text-center">
+                                <br />
+                                <h4>ЦІНА => @p.cost</h4>
+                                <br />
+                                <h4>КІЛЬКІСТЬ => @p.quantity</h4>
+                                <br />
+                                @if (User.Identity.Name == p.owner_alias)
+                                {
+                                    <div id="PlaceHolderHere"></div>
+                                    <div class="dropdown bg">
+                                        <a class="dropdown-toggle btn btn-success" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-list-ul"></i> МЕНЮ</a>
+                                        <div class="dropdown-menu" style="">
+                                            <button class="dropdown-item"
+                                type="button" data-toggle="ajax-modal" data-target="#createOHistory" data-url="@Url.Action("CreateOHistory","OrderHistory",
+                                        new OrderHistoryViewModel {
+                                            product_type = p.type_name,
+                                            product_name = p.title,
+                                            seller_alias = p.owner_alias,
+                                            cost = p.cost,
+                                            order_date = DateTime.Today
+                                        })">
+                                                <i class="bi bi-check2-circle"></i> НА ПРОДАЖ
+                                            </button>
+                                            <a asp-controller="Wirehouses" asp-action="EditW" class="dropdown-item bg-info" asp-route-id="@p.id" asp-route-isAllEdit=0><i class="bi bi-pencil-square"></i> РЕДАГУВАТИ</a>
+                                            <a asp-controller="Wirehouses" asp-action="EditW" class="dropdown-item bg-warning" asp-route-id="@p.id" asp-route-isAllEdit=1><i class="bi bi-pencil-square"></i> ЗМІНА КІЛЬКОСТІ</a>
+                                            <div class="dropdown-divider"></div>
+                                            <label>@p.type_name @p.title</label>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            }
+            </div>
+            <div class="card-footer"></div>
+            </div>
+        </div>
+    }
+}

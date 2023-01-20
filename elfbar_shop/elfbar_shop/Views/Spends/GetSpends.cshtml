@@ -1,0 +1,79 @@
+﻿@model elfbar_shop.Models.SpendsPageViewModel
+<br />
+@if (Model == null)
+{
+    <div class="text-center">
+        <div asp-validation-summary="ModelOnly" class="text-danger fs-4"></div>
+    </div>
+}
+<br />
+
+@if (Model != null)
+{
+    <h3 class="text-center">ІСТОРІЯ ПРОГАВИ ДЄНЄГ</h3>
+    <br />
+    <div class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 500px;">
+    <table class="table border-white">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Чому так сталось</th>
+                <th scope="col">Дата ПРОГАВИ</th>
+                <th scope="col">Ціна</th>
+            </tr>
+            </thead>
+        <tbody>
+            
+                @foreach (var d in Model.SpendList)
+                {
+                        <tr>
+                    <th scope="row">@d.id</th>
+                    <td>@d.spend_title</td>
+                    <td>@d.spend_date.ToString("dd.MM.yyyy")</td>
+                    <td>@d.cost</td>
+                </tr>
+                }
+                </tbody>
+                
+    </table>
+    </div>
+}
+<br />
+<form asp-action="CreateSpend" method="post">
+    <div class="card text-center">
+        <div class="card-header">
+
+        </div>
+        <div class="card-body">
+            <div class="card-title">
+                <h3>ДОДАВАННЯ ПРОГАВИ</h3>
+            </div>
+            <br />
+            <div class="card-text">
+                <label>Чому так сталось: </label>
+                <select asp-for="spend_title" name="spend_title">
+                    <option value="ТУПО ПРОГАВИЛИ">ТУПО ПРОГАВИЛИ</option>
+                    <option value="ПОСТАВКА">ПОСТАВКА</option>
+                </select>
+            </div>
+            <br />
+            <div class="card-text">
+                <label>Дата прогави: </label>
+                <input asp-for="spend_date" name="spend_date" type="date"/>
+            </div>
+            <br />
+            <div class="card-text">
+                <label>Сума: </label>
+                <input asp-for="cost" name="cost" placeholder="ЦІНА ПОСТАВКИ" type="number"/><br />
+                <span asp-validation-for="cost" class="text-danger text-center"></span>
+            </div>
+            <br />
+            <div class="card-text">
+                <button class="btn btn-success" type="submit">ДОДАТИ</button>
+            </div>
+        </div>
+        <div class="card-footer">
+            <label>ОП'ЯТЬ БАБКИ МІНУС?</label>
+        </div>
+    </div>
+</form>

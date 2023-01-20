@@ -1,0 +1,67 @@
+﻿@model elfbar_shop.Models.LaughPageViewModel
+
+<br />
+@if (Model == null)
+{
+    <div class="text-center">
+        <div asp-validation-summary="ModelOnly" class="text-danger fs-4"></div>
+    </div>
+}
+<br />
+
+@if (Model != null)
+{
+    <div class="card text-center">
+        <div class="card-header">
+            ЩА БУДЕ СМІШНЕНЬКЕ МЯСО 
+        </div>
+        <br />
+        <div class="card-body">
+            <div class="card-title">
+                <h3>СМІШНЯВКА-АНІКДОТ</h3>
+            </div>
+            <br />
+            <div class="card-text fs-5">
+                @Model._Laugh.str
+            </div>
+            <br />
+        </div>
+        <div class="card-footer">
+            РОЗ'*БАЛО?????!!!!! ШО, НЄ? ТОДІ КНОПКУ ВНИЗУ ТИКАЙ
+            <br />
+            <a asp-action="GetLs" class="btn btn-success">НЕКСТ</a>
+            <br />
+            СЄРИЙ, ЯКШО БУРДА, ТО УДАЛЯЙ
+            <br />
+            <a asp-action="DeleteL" class="btn btn-danger">РЕМУВ</a>
+        </div>
+    </div>
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<form asp-action="CreateL">
+    <div class="card text-center">
+        <div class="card-header">
+            ПОРАДУЙ СЄРОГО ДОБАВ СМІШНЯВКУ
+        </div>
+        <div class="card-body">
+            <div class="card-title">
+                <h3>НОВА СМІШНЯВКА-АНІКДОТ-НАХУЙ</h3>
+            </div>
+            <br />
+            <div class="card-text">
+                <label>ПИШИ СЮДИ: </label>
+                <textarea asp-for="str" name="str" style="width: 500px"></textarea>
+            </div>
+            <br />
+        </div>
+        <div class="card-footer">
+            СТУКАЙ КНОПКУ ВНИЗУ
+            <br />
+            <button type="submit" class="btn btn-success">ДОДАТЬ</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,47 @@
+﻿@model elfbar_shop.Models.Sell_InfoViewModel
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="text-center">
+        <br />
+        <h2>КАСА</h2>
+        <br />
+    </div>
+    <div class="card text-center">
+        <div class="card-header">
+            БАТРАЧИМ ЯК МОЖЕМ, А ГРОШЕЙ ВСЕ НЕМА, ПІДМАНУЛА ПІДВЕЛА
+        </div>
+        <div class="card-body">
+            <br />
+            <div class="card-text">
+                <div id="PlaceHolderHere"></div>
+                @if (Model.curbalance < Model.reqbalance)
+                {
+                        <h4 class="text-warning">БАЛАНС ЗГІДНО ПРОДАЖ => @Model?.curbalance грн</h4>
+                }
+                else if (Model.curbalance == Model.reqbalance)
+                {
+                        <h4 class="text-warning">БАЛАНС ЗГІДНО ПРОДАЖ => @Model?.curbalance грн</h4>
+                }
+                else if (Model.curbalance > Model.reqbalance)
+                {
+                        <h4 class="text-success">БАЛАНС ЗГІДНО ПРОДАЖ => @Model?.curbalance грн</h4>
+                }
+                else
+                {
+                        <h4>БАЛАНС ЗГІДНО ПРОДАЖ => @Model?.curbalance грн</h4>
+                }
+            </div>
+            <br />
+            <div class="card-text">
+                <h4 class="text-warning">МІНІМАЛЬНО-ПОТРІБНИЙ БАЛАНС (<button class="btn btn-success" type="button" data-toggle="ajax-modal" data-target="#setrbalance" data-url="@Url.Action("SetRBalancePrev","SellInfo")">ВИРАХУВАТИ</button>) => @Model?.reqbalance грн</h4> 
+            </div>
+            <br />
+        </div>
+        <div class="card-footer">
+            ПРОБ'ЄМО ПОТОЛОК БІТКА СВОЇМ БАЛІКОМ <br />
+            P.S. МІНІМАЛЬНИЙ БАЛІК СЧІТАЄМ ТІЛЬКИ ПІСЛЯ НОВИХ ПОСТАВОК
+        </div>
+    </div>
+}
+

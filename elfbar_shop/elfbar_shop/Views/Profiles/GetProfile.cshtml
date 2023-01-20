@@ -1,0 +1,15 @@
+﻿@model elfbar_shop.Models.ProfilesViewModel
+
+<br />
+<div class="card text-center">
+    <div class="card-header">
+    ПРОФІЛЬ
+    </div>
+    <div class="card-body">
+    <div class="card-title fs-3">СИЛЬНИЙ УКРАЇНЕЦЬ - @Model.alias</div> 
+    <div class="card-text fs-5">Логін: @Model.login</div>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-warning" asp-action="EditProfile" asp-route-id="@Model.id">ЗМІНІТИ</a>
+    </div>
+</div>

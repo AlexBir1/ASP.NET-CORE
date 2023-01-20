@@ -1,0 +1,51 @@
+﻿@model elfbar_shop.Models.WirehousesPageViewModel
+
+<br />
+<div class="text-center">
+    <div asp-validation-summary="ModelOnly" class="text-danger fs-4"></div>
+</div>
+<br />
+
+@if (Model.Product != null)
+{
+    <form asp-action="EditW" method="post" asp-route-owner_alias="@Model.Product.owner_alias" asp-route-id="@Model.Product.id">
+        <div class="card text-center">
+            <div class="card-header">
+       
+            </div>
+            <div class="card-body">
+                <div class=card-title>
+                    <h3>ЗМІНА КІЛЬКОСТІ ТОВАРУ У @Model.Product.owner_alias</h3>
+                </div>
+                <br />
+                <div class="card-text">
+                    <label>ТИП ТОВАРУ: @Model.Product.type_name</label>
+                    <input asp-for="type_name" name="type_name" placeholder="ВКАЖІТЬ НАЗВУ" value="@Model.Product.type_name" type="hidden"/>
+                </div>
+                <br />
+                <div class="card-text">
+                    <label>НАЗВА: @Model.Product.title</label>
+                    <input asp-for="title" name="title" placeholder="ВКАЖІТЬ НАЗВУ" value="@Model.Product.title" type="hidden"/>
+                </div>
+                <br />
+                <div class="card-text">
+                    <label>ЦІНА: @Model.Product.cost</label>
+                    <input asp-for="cost" name="cost" placeholder="ВКАЖІТЬ ЦІНА" value="@Model.Product.cost" type="hidden"/>
+                </div>
+                <br />
+                <div class="card-text">
+                    <label>КІЛЬКІСТЬ: </label>
+                    <input type="number" asp-for="quantity" name="quantity" placeholder="ВКАЖІТЬ КІЛЬКІСТЬ" value="@Model.Product.quantity"/><br />
+                    <span asp-validation-for="quantity" class="text-danger text-center"></span>
+                </div>
+                <br />
+                <div class="card-text">
+                    <button class="btn btn-warning" type="submit">ЗМІНИТИ</button>
+                </div>
+            </div>
+            <div class="card-footer">
+  
+            </div>
+        </div>
+    </form>
+}

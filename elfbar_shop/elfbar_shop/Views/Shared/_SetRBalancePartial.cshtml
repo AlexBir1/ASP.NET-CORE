@@ -1,0 +1,26 @@
+﻿
+<div class="modal fade" id="setrbalance">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center" id="setRBalanceLabel">А ЩАС ВНІМАТЄЛЬНО!</h3>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span class="text-white">x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="@Url.Action("SetRBalance","SellInfo")">
+                    <div class="form-group">
+                        <br />
+                        <h5>ПРИКОЛ ТАКИЙ</h5>
+                        <p>Щас ти нажимаєш кнопку "ПІДТВЕРДИТИ" і воно рахує по тій кількості одноразок, шо є на даний момент.<br />Того якщо ти це робиш уже після поставки і був продаж товарів БУДЕ НЕВІРНИЙ БАЛІК!</p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">СКАСУВАТИ</button>
+                <button type="button" class="btn btn-success" data-MakeNewRBalance="modal">ПІДТВЕРДИТИ</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@model TypesPageViewModel
+
+<br />
+@if (Model == null)
+{
+    <div class="text-center">
+        <div asp-validation-summary="ModelOnly" class="text-danger fs-4"></div>
+    </div>
+}
+<br />
+@if (Model != null)
+{
+    <h3 class="text-center">ТАЙП-ЛІСТ</h3>
+    <br />
+    <div class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 500px;">
+        <table class="table border-white">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Назва типу</th>
+                    <th scope="col">#</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var t in Model.TypeList)
+                {
+                    
+                    <tr>
+                        <th scope="row">@t.id</th>
+                        <td>@t.title</td>
+                        <td>
+                            <div id="PlaceHolderHere"></div>
+                            <button class="btn btn-danger"
+                                type="button" data-toggle="ajax-modal" data-target="#deleteType" data-url="@Url.Action("DeleteType","Types",
+                                        new TypesViewModel {
+                                            id = t.id,
+                                            title = t.title
+                                        })">
+                                                <i class="bi bi-trash3"></i> ВИДАЛИТИ
+                                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+    <br />
+    <br />
+    <br />
+    <form asp-action="CreateType" method="post">
+    <div class="card text-center">
+        <div class="card-header">
+
+        </div>
+        <div class="card-body">
+            <div class="card-title">
+                <h3>ДОДАВАННЯ ТИПУ ТОВАРУ</h3>
+            </div>
+            <br />
+            <div class="card-text">
+                НАЗВА ТИПУ: 
+                <input asp-for="title" name="title" placeholder="ВКАЖІТЬ НАЗВУ ТИПУ" /><br />
+                <span asp-validation-for="title" class="text-danger text-center"></span>
+            </div>
+            <br />
+            <div class="card-text">
+                <button class="btn btn-success" type="submit">ДОДАТИ</button>
+            </div>
+        </div>
+        <div class="card-footer">
+
+        </div>
+    </div>
+    </form>
+    }

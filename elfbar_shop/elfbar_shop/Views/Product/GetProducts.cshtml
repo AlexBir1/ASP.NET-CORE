@@ -1,0 +1,129 @@
+﻿@model elfbar_shop.Models.ProductPageViewModel
+
+<br />
+@if (Model.ProductList == null)
+{
+    <div class="text-center">
+        <div asp-validation-summary="ModelOnly" class="text-danger fs-4"></div>
+    </div>
+}
+<br />
+@if (Model.ProductList != null)
+{
+    <h3 class="text-center">ПРОДУКТ-ЛІСТ</h3>
+    <br />
+    <form asp-action="GetProducts" asp-route-GetByType="@Model.GetByType" class="text-center">
+        <label>Фільтрувати за типом: </label>
+                    <select asp-for="GetByType" name="GetByType" asp-items="@Model.ProdTypes">
+                        <option value="">ВИБРАТИ ВСІ</option>
+                    </select>
+                    <br />
+                    <button class="btn btn-success" type="submit">Вибрати</button>
+                </form>
+    <br />
+    @if (!Model.IsMobileDevice)
+    {
+        <div class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 500px;">
+            <table class="table border-white">
+                <thead>
+                    <tr>
+                        <th scope="col">Тип товару</th>
+                        <th scope="col">Назва</th>
+                        <th scope="col">Кількість</th>
+                        <th scope="col">Ціна</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model.ProductList)
+                    {
+                        <tr>
+                            <th scope="row">@p.type_name</th>
+                            <td>@p.title</td>
+                            <td>@p.quantity</td>
+                            <td>@p.cost</td>
+                            <td>
+                                <a asp-action="EditProduct" class="btn btn-warning" asp-route-id="@p.id"><i class="bi bi-pencil-square"></i> РЕДАГУВАТИ</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    @if (Model.IsMobileDevice)
+    {
+        <div class="card">
+            <div class="card-header"></div>
+        <div class="card-body">
+            <div class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 500px;">
+        @foreach (var p in Model.ProductList)
+        {
+            <div class="accordion" id="accordionExample_@p.id">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading_@p.id">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse_@p.id" aria-expanded="false" aria-controls="flush-collapse_@p.id">
+                            ТОВАР: @p.type_name @p.title
+                        </button>
+                    </h2>
+                    <div id="flush-collapse_@p.id" class="accordion-collapse collapse" aria-labelledby="flush-heading_@p.id" data-bs-parent="#accordionExample_@p.id">
+                        <div class="accordion-body text-center">
+                            <br />
+                            <h4>ЦІНА => @p.cost</h4>
+                            <br />
+                            <h4>КІЛЬКІСТЬ => @p.quantity</h4>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+        </div>
+        <div class="card-footer"></div>
+        </div>
+}
+}
+<br />
+<form asp-action="CreateProduct" method="post" asp-route-quantity="0">
+<div class="card-group">
+    <div class="card text-center">
+        <div class="card-header">
+            @User.Identity.Name, НАЗВАНІЄ НОРМ НАПИШИ, БО ПОТОМ НЕ РОЗБЕРЕШ
+        </div>
+        <div class="card-body">
+            <div class="card-title">
+                <h3>ДОДАЙТЕ НОВИЙ ТОВАР</h3>
+            </div>
+            <br />
+            <div class="card-text">
+                <label>Існуючий тип товару: </label>
+                 <select asp-for="type_name" name="type_name" asp-items="@Model.ProdTypes">
+                        <option value="">--Вибрати--</option>
+                    </select>
+            </div>
+            <br />
+            <div class="card-text">
+                <label>Назва: </label>
+                <input type="text" asp-for="title" name="title" placeholder="Вкажіть назву"/><br />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="card-text">
+                <label>Ціна: </label>
+                <input asp-for="cost" name="cost" placeholder="Вкажіть ціну"/><br />
+                <span asp-validation-for="cost" class="text-danger text-center"></span>
+            </div>
+            <br />
+            <div class="card-text">
+                <button class="btn btn-success" type="submit">ДОДАТИ</button>
+            </div>
+        </div>
+        <div class="card-footer">
+            ОСВОБОДІ НАС ОТ ЛУКАВОГО, @User.Identity.Name, АМІНЬ<br />
+            КІЛЬКІСТЬ ТОВАРУ ВСТАНОВЛЮЄТЬСЯ АВТОМАТИЧНО, ПІСЛЯ ЇЇ ЗМІНИ У ВЛАСНИХ ТАБЛИЦЯХ
+        </div>
+    </div>
+</div>
+<br />
+</form>

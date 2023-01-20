@@ -1,0 +1,56 @@
+﻿@model elfbar_shop.Models.OrderHistoryPageViewModel
+<br />
+@if (Model == null)
+{
+    <div class="text-center">
+        <div asp-validation-summary="ModelOnly" class="text-danger fs-4"></div>
+    </div>
+}
+<br />
+
+@if (Model != null)
+{
+    <h3 class="text-center">ІСТОРІЯ ПРОДАЖУ ТОВАРІВ</h3>
+    <br />
+    <form asp-action="GetOHistories" asp-route-GetBySeller="@Model.GetBySeller" class="text-center">
+        <label>Фільтрувати за типом: </label>
+                    <select asp-for="GetBySeller" name="GetBySeller" asp-items="@Model.SellerList">
+                        <option value="">ВИБРАТИ ВСІ</option>
+                    </select>
+                    <br />
+                    <button class="btn btn-success" type="submit">Вибрати</button>
+                </form>
+                <br />
+    <div class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 500px;">
+    <table class="table border-white">
+        <thead>
+            <tr>
+                <th scope="col">ВІДПРАВНИК</th>
+                <th scope="col">Тип товару</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Дата відправки</th>
+                <th scope="col">Ціна</th>
+                <th scope="col">#</th>
+            </tr>
+            </thead>
+        <tbody>
+            
+                @foreach (var o in Model.OHistoryList)
+                {
+                        <tr>
+                    <th scope="row">@o.seller_alias</th>
+                    <td>@o.product_type</td>
+                    <td>@o.product_name</td>
+                    <td>@o.order_date.ToString("dd.MM.yyyy")</td>
+                    <td>@o.cost</td>
+                    <td>
+                        <a asp-action="DeleteOHistory" class="btn btn-danger" asp-route-id="@o.id" asp-route-seller_alias="@User.Identity.Name"><i class="bi bi-x-circle"></i> СКАСУВАТИ</a>
+                    </td>
+                </tr>
+                }
+                </tbody>
+                
+    </table>
+    </div>
+}
+<br />

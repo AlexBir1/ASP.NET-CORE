@@ -1,0 +1,39 @@
+﻿@model elfbar_shop.Models.ProfilesViewModel
+
+<br />
+<form asp-action="EditProfile" method="post" asp-route-id="@Model.id">
+<div class="card text-center">
+    <div class="card-header">
+        А ШО ТОБІ НЕ ПОНРАВИЛОСЬ, @User.Identity.Name?
+    </div>
+    <div class="card-body">
+        <div class="card-title">
+        <h3>ЗМІНА ДАНИХ ПРОФІЛЮ</h3>
+    </div>
+    <div class="card-text">
+        <label>ПСЕВДОНІМ: </label>
+        <input asp-for="alias" name="alias" placeholder="ВКАЖІТЬ ALIAS" /><br />
+        <span asp-validation-for="alias" class="text-danger text-center"></span>
+    </div>
+    <br />
+    <div class="card-text">
+        <label>ЛОГІН: </label>
+        <input asp-for="login" name="login" placeholder="ВКАЖІТЬ LOGIN" /><br />
+        <span asp-validation-for="login" class="text-danger text-center"></span>
+    </div>
+    <br />
+    <div class="card-text">
+        <label>ПАРОЛЬ: </label>
+        <input asp-for="passw" name="passw" placeholder="ВКАЖІТЬ PASSWORD" /><br />
+        <span asp-validation-for="passw" class="text-danger text-center"></span>
+    </div>
+    <br />
+    <div class="card-text">
+        <button class="btn btn-warning" type="submit">ПОМІНЯТЬ</button>
+    </div>
+    </div>
+    <div class="card-footer">
+        НУ МІНЯЙ.
+    </div>
+</div>
+</form>
