@@ -1,0 +1,12 @@
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\obj\Debug\net5.0\WEBSHOP.Domain.csproj.AssemblyReference.cache
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\obj\Debug\net5.0\WEBSHOP.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\obj\Debug\net5.0\WEBSHOP.Domain.AssemblyInfoInputs.cache
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\obj\Debug\net5.0\WEBSHOP.Domain.AssemblyInfo.cs
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\obj\Debug\net5.0\WEBSHOP.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\bin\Debug\net5.0\WEBSHOP.Domain.deps.json
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\bin\Debug\net5.0\WEBSHOP.Domain.dll
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\bin\Debug\net5.0\ref\WEBSHOP.Domain.dll
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\bin\Debug\net5.0\WEBSHOP.Domain.pdb
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\obj\Debug\net5.0\WEBSHOP.Domain.dll
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\obj\Debug\net5.0\ref\WEBSHOP.Domain.dll
+C:\Users\ALEXBIR\source\repos\WEBSHOP\WEBSHOP.Domain\obj\Debug\net5.0\WEBSHOP.Domain.pdb

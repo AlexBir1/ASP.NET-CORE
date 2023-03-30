@@ -1,0 +1,56 @@
+﻿@model WEBSHOP.Domain.ViewModels.OrdersViewModel
+
+<div class="modal fade" id="prodsOrderList">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Order №@Model.Id</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="orderProdList">
+                    @foreach (var item in Model.ProductsIn)
+                    {
+                        <div class="col-lg-6" style="height:300px" id="@Model.Id">
+                            <div class="card">
+                                <div class="card-header">
+                                    <label class="card-title">
+                                        @item.Title
+                                    </label>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-group">
+                                         <label class="card-text">Type: @item.ProductType</label> 
+                                    </div>
+                                    <div class="card-group">
+                                         <label class="card-text">Manufactorer: @item.ProductManufactorer</label> 
+                                    </div>
+                                    <div class="card-group">
+                                        <label class="card-text">Wirehouse: @item.ProductUnit</label> 
+                                    </div>
+                                    <div class="card-group">
+                                       <label class="card-text">Amount: @item.Quantity</label> 
+                                    </div>
+                                </div>
+                                @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                                {
+                                    <div class="card-footer">
+                                        <button id="RemoveProd_@item.Id" class="btn btn-danger" type="button" asp-page="Orders" asp-page-handler="RemoveProductFromOrder" 
+                                asp-route-OrderId="@Model.Id"
+                                asp-route-ProductId="@item.Id"
+                            >Remove</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="CloseBtn" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>

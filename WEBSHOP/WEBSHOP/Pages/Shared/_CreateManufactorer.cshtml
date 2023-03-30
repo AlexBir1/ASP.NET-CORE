@@ -1,0 +1,51 @@
+﻿@model WEBSHOP.Domain.ViewModels.ManufactorerViewModel
+
+<div class="modal fade" id="MnfCreate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add new manufactorer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="MnfCreateForm" asp-page="/Manufactorer" asp-page-handler="Create">
+                    <div class="form-group">
+                        <label for="MnfTitle" class="form-label">Title</label>
+                        <input asp-for="Title" class="form-control" id="MnfTitle" placeholder="Enter title">
+                        <span class="form-text text-danger" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="MnfPhone" class="form-label">Phone</label>
+                        <input asp-for="Phone" class="form-control" id="MnfPhone" placeholder="Enter mobile phone">
+                        <span class="form-text text-danger" asp-validation-for="Phone"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="MnfCountry" class="form-label">Country</label>
+                        <input asp-for="Country" class="form-control" id="MnfCountry" placeholder="Enter country">
+                        <span class="form-text text-danger" asp-validation-for="Country"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="MnfAddress" class="form-label">Address</label>
+                        <input asp-for="Address" class="form-control" id="MnfAddress" placeholder="Enter address">
+                        <span class="form-text text-danger" asp-validation-for="Address"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="MnfEmail" class="form-label">Email</label>
+                        <input asp-for="Email" class="form-control" id="MnfEmail" placeholder="Enter email">
+                        <span class="form-text text-danger" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                    </div>
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="CreateBtn" type="button" class="btn btn-secondary"><i class="bi bi-cassette"></i> Add</button>
+                <button id="CancelBtn" type="button" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@using WEBSHOP.Domain.ViewModels
+
+@model WEBSHOP.Domain.ViewModels.TypesViewModel
+
+<div class="modal fade" id="TypeCreate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create new type</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="TypeCreateForm" asp-page="Types" asp-page-handler="Create">
+                    <div class="form-group">
+                        <label id="TypeTitleIfCh" for="TypeTitle" class="form-label">Title</label>
+                        <input asp-for="Title" class="form-control" id="TypeTitle" placeholder="Enter title">
+                        <span class="form-text text-danger" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                    </div>
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="CreateBtn" type="button" class="btn btn-secondary"><i class="bi bi-cassette"></i> Add</button>
+                <button data-bs-dismiss="modal" type="button" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

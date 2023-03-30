@@ -1,0 +1,44 @@
+﻿@model WEBSHOP.Domain.ViewModels.OrdersViewModel
+
+<div class="modal fade" id="OrderStatusChange">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Changer order`s status</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="OrderStatusChangeForm" asp-page="Orders" asp-page-handler="StatusEdit" method="post">
+                    <div class="form-group">
+                        <label for="ProdId" class="form-label">ID</label>
+                        <input asp-for="Id" class="form-control" id="ProdId" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="OwnerFN" class="form-label">Orderer`s fullname</label>
+                        <input asp-for="Owner.Fullname" class="form-control" id="OwnerFN" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="OwnerPhone" class="form-label">Orderer`s phone</label>
+                        <input asp-for="Owner.Phone" class="form-control" id="OwnerPhone" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="ProdTitle" class="form-label">Title</label>
+                        <select asp-for="Status" class="form-select" id="ProdTitle" asp-items="@Html.GetEnumSelectList<OrderStatus>()">
+                            <option value="@Model.Status">Default(@Model.Status.ToString())</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="SaveStatusBtn" type="button" class="btn btn-secondary"><i class="bi bi-cassette"></i> Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Discard</button>
+            </div>
+        </div>
+    </div>
+</div>
+

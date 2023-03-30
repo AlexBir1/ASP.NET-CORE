@@ -1,0 +1,89 @@
+﻿@page
+@model WEBSHOP.Pages.PaymentMethodModel
+@{
+}
+
+<div id="MainDiv">
+<div class="text-center">
+        <label id="MainLabel" class="font-weight-normal fs-1">
+            Payment methods <i class="bi bi-plus-circle link-success" data-createpartial="@Url.Page("PaymentMethod","ToCreate")"></i>
+        </label>
+    </div>
+    <br />
+    <br />
+    <div id="pmList" class="row" style="justify-content:center">
+        @foreach (var item in Model.paymentMethodsList)
+        {
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <label class="card-text fs-3">
+                            Payment method №@item.Id
+                        </label>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-group">
+                            Number: @item.CardNumber
+                        </div>
+                        <div class="card-group">
+                            Will expire: @item.CardExpirationMonth/@item.CardExpirationYear
+                        </div>
+                        <div class="card-group">
+                            CVV code: @item.CardCVV
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-outline-danger" asp-page="/PaymentMethod" asp-page-handler="Delete" asp-route-Id="@item.Id"
+                                    data-delConfPart="/PaymentMethod?Id=@item.Id&handler=ToDelete">
+                                        <i class="bi bi-trash3"></i> Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).on('click', '.bi-plus-circle', function (e) {
+        $('#MainDiv').append('<div id="ModalHere"></div>');
+        var ModalCreateElement = $('#ModalHere');
+        var url = $(this).data('createpartial');
+        $.get(url).done(function (data) {
+            ModalCreateElement.html(data);
+            ModalCreateElement.find('.modal').modal('show');
+        })
+
+        ModalCreateElement.on('click', 'button[data-bs-dismiss *= "modal"]', function (e) {
+            ModalCreateElement.find('.modal').modal('hide');
+            $('#MainDiv').find('#ModalHere').remove();
+        });
+
+        ModalCreateElement.on('click', '#CreateBtn', function (e) {
+            var dataToSend = ModalCreateElement.find('#PMCreateForm').serialize();
+            var crtUrl = ModalCreateElement.find('#PMCreateForm').attr('action');
+            $.ajax({
+                type: "POST",
+                url: crtUrl,
+                data: dataToSend
+            }).done(function (e) {
+                var newBody = $('.modal-body', e);
+                ModalCreateElement.find('.modal-body').replaceWith(newBody);
+                var isValid = newBody.find('[name="IsValid"]').val() == 'True';
+                if (isValid) {
+                    $.get('PaymentMethod').done(function (e) {
+                        var newbody = $('#pmList', e);
+                        $(document).find('#pmList').replaceWith(newbody);
+                        ModalCreateElement.find('.modal').modal('hide');
+                        $('#ModalHere').remove();
+                    })
+                }
+            })
+        })
+    })
+    </script>
+}

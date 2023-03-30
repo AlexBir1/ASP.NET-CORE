@@ -1,0 +1,37 @@
+﻿@model WEBSHOP.Domain.ViewModels.DeleteViewModel
+
+<div class="modal fade" id="ConfirmDeleteWnd">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Warning!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label class="form-text fs-5 text-black">Check information below before removing:</label>
+                <div class="card">
+                    <div class="card-header text-center">
+                        <label class="card-title text-black fs-5">
+                            @Model.ObjName
+                        </label>
+                    </div>
+                    <div class="card-body">
+                        @foreach (var item in Model.ObjInfo)
+                        {
+                            <div class="card-group">
+                                <label class="card-text text-black">@item.Key: @item.Value</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <label class="form-text fs-5 text-black">This action cannot be canceled. Proceed?</label>
+            </div>
+            <div class="modal-footer">
+                <button id="ConfirmDeleteBtn" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i> Proceed</button>
+                <button id="CancelDeleteBtn" type="button" class="btn btn-success"><i class="bi bi-x-circle"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

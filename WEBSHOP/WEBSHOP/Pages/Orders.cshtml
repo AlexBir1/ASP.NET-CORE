@@ -1,0 +1,119 @@
+﻿@page
+@model WEBSHOP.Pages.OrdersModel
+
+
+<div id="MainDiv">
+<div class="text-center">
+    <label class="form-text fs-1">Orders</label>
+</div>
+    <div id="orderList" class="row" style="justify-content:center; overflow-y:scroll; height:700px">
+        @foreach(var item in Model.orders)
+        {
+            <div class="col-lg-4" style="height:330px">
+                <div id="@item.Id" class="card">
+                    <div class="card-header">
+                        <label class="card-title">Order №@item.Id</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-group">
+                            <label class="card-text">Cost: @item.FullCost</label>
+                        </div>
+                        <div class="card-group">
+                            <label class="card-text">Status: @item.Status.ToString()</label>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-group">
+                            <label class="card-text text-dark">Created by: @item.Owner.Fullname</label>
+                        </div>
+                        <div class="card-group">
+                            <label class="card-text text-dark">Creator`s phone: @item.Owner.Phone</label>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row" style="justify-content:center">
+                            <div class="col">
+                                <button id="ShowOrderProdList_@item.Id" type="button" class="btn btn-outline-dark" asp-page="Product" asp-page-handler="ShowOrderProdList" asp-route-OrderId="@item.Id"><i class="bi bi-bag"></i> Product list</button>
+                            </div>
+                            @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                            {
+                                <div class="col">
+                                    <button id="StatusChange_@item.Id" type="button" class="btn btn-outline-dark" asp-page="Orders" asp-page-handler="ToStatusEdit" asp-route-Id="@item.Id"><i class="bi bi-bag"></i> Change status</button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-outline-danger" asp-page="/Orders" asp-page-handler="Delete" asp-route-Id="@item.Id"
+                                    data-delConfPart="/Orders?Id=@item.Id&handler=ToDelete">
+                                        <i class="bi bi-trash3"></i> Delete
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).on('click','button[id *= "ShowOrderProdList_"]',function(){
+            $('#MainDiv').append('<div id="ModalHere"></div>');
+            var ModalElement = $('#ModalHere');
+            var url = $(this).attr('formaction');
+            $.get(url).done(function (data) {
+                ModalElement.html(data);
+                ModalElement.find('.modal').modal('show');
+            })
+            ModalElement.on('click', 'button[data-bs-dismiss *= "modal"]', function(e){
+                ModalElement.find('.modal').modal('hide');
+                ModalElement.html(null);
+                ModalElement.remove();
+            })
+            ModalElement.on('click', '.btn-danger', function(e){
+                var actionUrl = $(this).attr('formaction');
+                var orderId = $(this).parents('.col-lg-6').attr('id');
+                $.get(actionUrl).done(function(e){
+                    $.get("/Product?OrderId="+ orderId +"&handler=ShowOrderProdList").done(function(e){
+                        var newbody = $('#orderProdList', e);
+                        $(document).find('#orderProdList').replaceWith(newbody);
+                    })
+                    })
+            })
+        })
+
+        $(document).on('click','button[id *= "StatusChange_"]',function (e) {
+        $('#MainDiv').append('<div id="ModalHere"></div>');
+        var ModalCreateElement = $('#ModalHere');
+        var url = $(this).attr('formaction');
+            $.get(url).done(function (data) {
+                ModalCreateElement.html(data);
+                ModalCreateElement.find('.modal').modal('show');
+            })
+        ModalCreateElement.on('click', 'button[data-bs-dismiss *= "modal"]', function (e) {
+            ModalCreateElement.find('.modal').modal('hide');
+            $('#MainDiv').find('#ModalHere').remove();
+        });
+
+        ModalCreateElement.on('click', '#SaveStatusBtn', function (e) {
+            var dataToSend = ModalCreateElement.find('#OrderStatusChangeForm').serialize();
+            var crtUrl = ModalCreateElement.find('#OrderStatusChangeForm').attr('action');
+            $.ajax({
+                type: "POST",
+                url: crtUrl,
+                data: dataToSend
+            }).done(function (e) {
+                    $.get('Orders').done(function (e) {
+                        var newbody = $('#orderList', e);
+                        $(document).find('#orderList').replaceWith(newbody);
+                        ModalCreateElement.find('.modal').modal('hide');
+                        $('#ModalHere').remove();
+
+                    })
+            })
+        })
+
+
+    })
+    </script>
+}

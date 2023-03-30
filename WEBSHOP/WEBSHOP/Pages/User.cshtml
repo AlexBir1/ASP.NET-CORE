@@ -1,0 +1,245 @@
+﻿@page
+@model WEBSHOP.Pages.UserModel
+
+<div id="MainDiv">
+
+    <div class="text-center">
+        <label id="MainLabel" class="font-weight-normal fs-1">
+            @Model.UserInfo.Status`s page @if (User.IsInRole(UserStatus.Admin.ToString()))
+            {
+                <i class="bi bi-plus-circle link-success" data-createpartial="@Url.PageLink("/User","DataToCreatePartial")"></i>
+            }
+        </label>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row" style="justify-content:center">
+        <div class="col-sm-6" style="height:350px">
+            <div class="card">
+                <div class="card-header">
+                    <label class="card-title fs-3">
+                        PROFILE ID: @Model.UserInfo.Id
+                    </label>
+                </div>
+                <div class="card-body">
+                    <div class="card-group">
+                        <label class="card-text fs-5">
+                            Fullname: @Model.UserInfo.Fullname
+                        </label>
+                    </div>
+                    <div class="card-group">
+                        <label class="card-text fs-5">
+                            Phone: @Model.UserInfo.Phone
+                        </label>
+                    </div>
+                    <div class="card-group">
+                        <label class="card-text fs-5">
+                            Shipping address: @Model.UserInfo.ShippingAddress
+                        </label>
+                    </div>
+                    <div class="card-group">
+                        <label class="card-text fs-5">
+                            Login: @Model.UserInfo.Login
+                        </label>
+                    </div>
+                    <div class="card-group">
+                        <label class="card-text fs-5">
+                            Password: @Model.UserInfo.Password
+                        </label>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <button id="CEChangeInfo" type="button" class="btn btn-outline-warning" data-url="@Url.PageLink("User","DataToEditPartial",new UserViewModel
+                        {
+                            Id = @Model.UserInfo.Id
+                        })">Change profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+        {
+            <div class="col-sm-6" style="height:350px">
+                <div class="card">
+                    <div class="card-header">
+                        <label class="card-title fs-3">
+                            UNIT ID: @Model.UserInfo.MyUnit.Id
+                        </label>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-group">
+                            <label class="card-text">
+                                Fullname: @Model.UserInfo.MyUnit.Title
+                            </label>
+                        </div>
+                        <div class="card-group">
+                            <label class="card-text">
+                                Phone: @Model.UserInfo.MyUnit.Address
+                            </label>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    @if (Model.UsersInfo != null)
+    {
+        <div id="UserList">
+            <div class="text-center">
+                <label id="MainLabel" class="font-weight-normal fs-1">UserList</label>
+            </div>
+            <br />
+            <br />
+            <div class="row" style="justify-content:center">
+                @foreach (var item in Model.UsersInfo)
+                {
+                    if (item.Id == int.Parse(User.FindFirst(ClaimTypes.Sid).Value)) continue;
+                    <div class="col-lg-6" style="height:350px">
+                        <div class="card">
+                            <div class="card-header">
+                                <label class="card-title fs-3">
+                                    PROFILE ID: @item.Id
+                                </label>
+                            </div>
+                            <div class="card-body">
+                                <form asp-page-handler="">
+                                    <div class="card-group">
+                                        <label class="card-text fs-5">
+                                            Fullname: @item.Fullname
+                                        </label>
+                                    </div>
+                                    <div class="card-group">
+                                        <label class="card-text fs-5">
+                                            Phone: @item.Phone
+                                        </label>
+                                    </div>
+                                    <div class="card-group">
+                                        <label class="card-text fs-5">
+                                            Shipping address: @item.ShippingAddress
+                                        </label>
+                                    </div>
+                                    <div class="card-group">
+                                        <label class="card-text fs-5">
+                                            Login: @item.Login
+                                        </label>
+                                    </div>
+                                    <div class="card-group">
+                                        <label class="card-text fs-5">
+                                            Password: @item.Password
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer text-center">
+                                <div class="row" style="justify-content:center">
+                                    <div class="col">
+                                        <button id="CustomerChangeInfoByAdmin" type="button" class="btn btn-outline-warning" data-url="@Url.PageLink("User","DataToEditPartial",new UserViewModel
+                        {
+                            Id = item.Id
+                        })">
+                                            Change profile
+                                        </button>
+                                    </div>
+                                    <div class="col">
+                                        <button id="CustomerDeleteByAdmin" type="button" class="btn btn-outline-danger" asp-page="/User" asp-page-handler="Delete" asp-route-Id="@item.Id"
+                                    data-delConfPart="/User?Id=@item.Id&handler=ToDelete">Delete profile</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts{
+<script>
+    $(document).on('click','.btn-outline-warning',function (e) {
+                $('#MainDiv').append('<div id="ModalHere"></div>');
+                var ModalEditElement = $('#ModalHere');
+                var url = $(this).data('url');
+                $.get(url).done(function (data) {
+                    ModalEditElement.html(data);
+                    ModalEditElement.find('.modal').modal('show');
+                })
+                if(ModalEditElement.find('#US').html === 'Customer'){
+                    ModalEditElement.find('#US').parent('.form-group').hide();
+                }
+
+            $(document).on('click','button[data-bs-dismiss *= "modal"]',function(e){
+                    ModalEditElement.find('.modal').modal('hide');
+                    ModalEditElement.html(null);
+                    ModalEditElement.remove();
+                })
+
+            ModalEditElement.on('click','#SaveBtn', function(e) {
+                var actionUrl = ModalEditElement.find('#UserEditForm').attr('action');
+                var data = ModalEditElement.find('#UserEditForm').serialize();
+                ModalEditElement.off('click', '#SaveBtn');
+                $.ajax({
+                    type: 'post',
+                    url: actionUrl,
+                    data: data,
+                }).done(function(e){
+                            var newBody = $('.modal-body', e);
+                        ModalEditElement.find('.modal-body').replaceWith(newBody);
+                        var isValid = newBody.find('[name="IsValid"]').val() == 'True';
+                        if (isValid) {
+                            $.get('/User').done(function(e){
+                                var newbody = $('#UserList', e);
+                                $(document).find('#UserList').replaceWith(newbody);
+                                ModalEditElement.find('.modal').modal('hide');
+                                $('#MainDiv').find('#ModalHere').remove();
+                            })
+                        }
+                        })
+                  })
+            })
+            $(document).on('click', '.bi-plus-circle', function (e) {
+            $('#MainDiv').append('<div id="ModalHere"></div>');
+            var ModalCreateElement = $('#ModalHere');
+            var url = $(this).data('createpartial');
+            $.get(url).done(function (data) {
+                ModalCreateElement.html(data);
+                ModalCreateElement.find('.modal').modal('show');
+            })
+            ModalCreateElement.on('click', 'button[data-bs-dismiss *= "modal"]', function (e) {
+                ModalCreateElement.find('.modal').modal('hide');
+                $('#MainDiv').find('#ModalHere').remove();
+            });
+
+            ModalCreateElement.on('click', '#CreateBtn', function (e) {
+                var dataToSend = ModalCreateElement.find('#UserCreateForm').serialize();
+                var crtUrl = ModalCreateElement.find('#UserCreateForm').attr('action');
+                $.ajax({
+                    type: "POST",
+                    url: crtUrl,
+                    data: dataToSend
+                }).done(function (e) {
+                    var newBody = $('.modal-body', e);
+                    ModalCreateElement.find('.modal-body').replaceWith(newBody);
+                    var isValid = newBody.find('[name="IsValid"]').val() == 'True';
+                    if (isValid) {
+                        $.get('User').done(function (e) {
+                            var newbody = $('#UserList', e);
+                            $(document).find('#UserList').replaceWith(newbody);
+                            ModalCreateElement.find('.modal').modal('hide');
+                            $('#ModalHere').remove();
+                        })
+                    }
+                })
+            })
+        })
+</script>
+}

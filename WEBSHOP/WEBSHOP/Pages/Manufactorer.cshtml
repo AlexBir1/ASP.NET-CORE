@@ -1,0 +1,154 @@
+﻿@page
+@model WEBSHOP.Pages.ManufactorerModel
+
+
+<div id="MainDiv">
+    <div class="text-center">
+        <label id="MainLabel" class="font-weight-normal fs-1">
+            Manufactorers @if (User.IsInRole(UserStatus.Admin.ToString()))
+            {
+                <i id="CreateMnf" class="bi bi-plus-circle link-success" data-createpartial="@Url.Page("/Manufactorer","ToCreate")"></i>
+            }
+        </label>
+    </div>
+    <br />
+    <br />
+
+    <div id="MnfList" class="row" style="justify-content:center">
+        @Html.AntiForgeryToken()
+        @foreach (var Mnf in Model.MnfList)
+        {
+            <div class="col-lg-4" style="height:300px" id="Mnf_@Mnf.Id">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <label class="card-title fs-3">@Mnf.Title</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" style="justify-content:center">
+                            <div class="col" style="justify-content:center">
+                                <div class="row">
+                                    <label class="card-text">Country: @Mnf.Country</label>
+                                </div>
+                                <div class="row ">
+                                    <label class="card-text">Phone: @Mnf.Phone</label>
+                                </div>
+                                <div class="row ">
+                                    <label class="card-text">Email: @Mnf.Email</label>
+                                </div>
+                                <div class="row ">
+                                    <label class="card-text">Address: @Mnf.Address</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row text-center" style="justify-content:center">
+                            <div class="col">
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-warning" data-url="@Url.Page("Manufactorer","ToEdit", new ManufactorerViewModel{
+                                Id = Mnf.Id,
+                                Title = Mnf.Title,
+                                Phone = Mnf.Phone,
+                                Email = Mnf.Email,
+                                Address = Mnf.Address,
+                                Country = Mnf.Country
+                                })">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-danger" asp-page="Manufactorer" asp-page-handler="Delete" asp-route-Id="@Mnf.Id"
+                                    data-delConfPart="/Manufactorer?Id=@Mnf.Id&handler=ToDelete">
+                                    <i class="bi bi-trash3"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts{
+<script>
+
+    $(document).on('click', '.btn-outline-warning', function(e)
+    {
+        $('#MainDiv').append('<div id="ModalHere"></div>');
+        var ModalElement = $('#ModalHere');
+        var actionUrl = $(this).data('url');
+
+        $.get(actionUrl).done(function(e){
+            ModalElement.html(e);
+            ModalElement.find('.modal').modal('show');
+        });
+
+        ModalElement.on("click", '#DiscardBtn', function (e) {
+            ModalElement.find('.modal').modal('hide');
+            $('#MainDiv').find('#ModalHere').remove();
+    })
+
+    ModalElement.on('click','#SaveBtn', function(e) {
+
+        var actionUrl = ModalElement.find('#MnfEditForm').attr('action');
+        var dataToSend = ModalElement.find('#MnfEditForm').serialize();
+            ModalElement.off('click', '#SaveBtn');
+        $.ajax({
+            type: "POST",
+            url: actionUrl,
+            data: dataToSend,
+            error: function(e){
+                alert('Unexpected error');
+            }
+        }).done(function (nhtml)
+    {
+         var newBody = $('#MnfList', nhtml);
+
+         $('#MainDiv').replaceWith(newBody);
+         ModalElement.find('.modal').modal('hide');
+         $('#MainDiv').find('#ModalHere').remove();
+    })
+    })
+    })
+
+    
+    $(document).on('click', '#CreateMnf', function(e){
+        $('#MainDiv').append('<div id="ModalHere"></div>');
+        var ModalCreateElement = $('#ModalHere');
+        var url = $(this).data('createpartial');
+        $.get(url).done(function (data) {
+            ModalCreateElement.html(data);
+            ModalCreateElement.find('.modal').modal('show');
+        })
+
+        ModalCreateElement.on('click', '#CancelBtn', function(e){
+            ModalCreateElement.find('.modal').modal('hide');
+            $('#MainDiv').find('#ModalHere').remove();
+        });
+
+        ModalCreateElement.on('click', '#CreateBtn',function(e){
+            ModalCreateElement.off('click', '#CreateBtn');
+            var dataToSend = ModalCreateElement.find('#MnfCreateForm').serialize();
+            var crtUrl = ModalCreateElement.find('#MnfCreateForm').attr('action');
+            $.ajax({
+                type: "POST",
+                url: crtUrl,
+                data: dataToSend
+            }).done(function(e){
+                var newBody = $('.modal-body', e);
+                ModalCreateElement.find('.modal-body').replaceWith(newBody);
+                var isValid = newBody.find('[name="IsValid"]').val() == 'True';
+                if (isValid) {
+                    $.get('Manufactorer').done(function(e){
+                        var newbody = $('#MnfList', e);
+                        $(document).find('#MnfList').replaceWith(newbody);
+                        ModalCreateElement.find('.modal').modal('hide');
+                        $('#MainDiv').find('#ModalHere').remove();
+                    })
+                }
+                })
+        })
+    })
+</script>
+}

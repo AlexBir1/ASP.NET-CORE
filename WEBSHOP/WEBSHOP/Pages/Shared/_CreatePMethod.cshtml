@@ -1,0 +1,46 @@
+﻿@model WEBSHOP.Domain.ViewModels.PaymentMethodViewModel
+
+<div class="modal fade" id="PMCreate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add new manufactorer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="PMCreateForm" asp-page="PaymentMethod" asp-page-handler="Create">
+                    <div class="form-group">
+                        <label for="CNum" class="form-label">Title</label>
+                        <input asp-for="CardNumber" class="form-control" id="CNum" placeholder="Enter number">
+                        <span class="form-text text-danger" asp-validation-for="CardNumber"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="MnfPhone" class="form-label">Phone</label>
+                        <input asp-for="CardExpirationMonth" class="form-control" id="MnfPhone" placeholder="Enter expiration month">
+                        <span class="form-text text-danger" asp-validation-for="CardExpirationMonth"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="MnfCountry" class="form-label">Country</label>
+                        <input asp-for="CardExpirationYear" class="form-control" id="MnfCountry" placeholder="Enter expiration year">
+                        <span class="form-text text-danger" asp-validation-for="CardExpirationYear"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="MnfAddress" class="form-label">Address</label>
+                        <input asp-for="CardCVV" class="form-control" id="MnfAddress" placeholder="Enter CVV">
+                        <span class="form-text text-danger" asp-validation-for="CardCVV"></span>
+                    </div>
+                    <div class="form-group">
+                        <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                    </div>
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="CreateBtn" type="button" class="btn btn-secondary"><i class="bi bi-cassette"></i> Add</button>
+                <button data-bs-dismiss="modal" type="button" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

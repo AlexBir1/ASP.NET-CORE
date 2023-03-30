@@ -1,0 +1,59 @@
+﻿@model WEBSHOP.Domain.ViewModels.UserCUViewModel
+
+<div class="modal fade" id="UserCreate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add new user</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="UserCreateForm" asp-page="User" asp-page-handler="CreateProfileByAdmin" method="post">
+                    <div class="form-group">
+                        <label for="UL" class="form-label">Fullname</label>
+                        <input asp-for="Fullname" type="text" class="form-control" id="UL" placeholder="Enter fullname (ex. Voronenko Vitaliy)">
+                        <span class="form-text text-danger" asp-validation-for="Fullname"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="UP" class="form-label">Phone</label>
+                        <input asp-for="Phone" type="text" class="form-control" id="UP" placeholder="Enter your mobile number">
+                        <span class="form-text text-danger" asp-validation-for="Phone"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="UP" class="form-label">Shipping address</label>
+                        <input asp-for="ShippingAddress" type="text" class="form-control" id="UP" placeholder="Enter your shipping address">
+                        <span class="form-text text-danger" asp-validation-for="ShippingAddress"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="UP" class="form-label">Login</label>
+                        <input asp-for="Login" type="text" class="form-control" id="UP" placeholder="Enter login">
+                        <span class="form-text text-danger" asp-validation-for="Login"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="UP" class="form-label">Password</label>
+                        <input asp-for="Password" type="text" class="form-control" id="UP" placeholder="Enter Password">
+                        <span class="form-text text-danger" asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="US" class="form-label">Status</label>
+                        <select asp-for="Status" class="form-select" id="US" asp-items="@Html.GetEnumSelectList<UserStatus>()"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="UU" class="form-label">Unit</label>
+                        <select asp-for="MyUnit.Id" class="form-select" id="UU" asp-items="@Model.Units"></select>
+                    </div>
+                    <div class="form-group">
+                        <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                    </div>
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="CreateBtn" type="button" class="btn btn-secondary"><i class="bi bi-cassette"></i> Add</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

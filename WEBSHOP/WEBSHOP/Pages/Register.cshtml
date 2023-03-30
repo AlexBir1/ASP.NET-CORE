@@ -1,0 +1,56 @@
+﻿@page
+@model WEBSHOP.Pages.RegisterModel
+@{
+}
+
+<form id="formRegister" method="post">
+    @Html.AntiForgeryToken()
+    <div class="row" style="justify-content:center">
+        <div class="card col-8">
+            <div class="card-header text-center fs-3">Registration of a new account</div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="UL" class="form-label">Fullname</label>
+                    <input asp-for="Fullname" type="text" class="form-control" id="UL" placeholder="Enter fullname (ex. Voronenko Vitaliy)">
+                    <span class="form-text text-danger" asp-validation-for="Fullname"></span>
+                </div>
+                <div class="form-group">
+                    <label for="UP" class="form-label">Phone</label>
+                    <input asp-for="Phone" type="text" class="form-control" id="UP" placeholder="Enter your mobile number">
+                    <span class="form-text text-danger" asp-validation-for="Phone"></span>
+                </div>
+                <div class="form-group">
+                    <label for="UP" class="form-label">Shipping address</label>
+                    <input asp-for="ShippingAddress" type="text" class="form-control" id="UP" placeholder="Enter your shipping address">
+                    <span class="form-text text-danger" asp-validation-for="ShippingAddress"></span>
+                </div>
+                <div class="form-group">
+                    <label for="UP" class="form-label">Login</label>
+                    <input asp-for="Login" type="text" class="form-control" id="UP" placeholder="Enter login">
+                    <span class="form-text text-danger" asp-validation-for="Login"></span>
+                </div>
+                <div class="form-group">
+                    <label for="UP" class="form-label">Password</label>
+                    <input asp-for="Password" type="text" class="form-control" id="UP" placeholder="Enter password">
+                    <span class="form-text text-danger" asp-validation-for="Password"></span>
+                </div>
+                <div class="form-group">
+                    <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button id="submitformRegister" class="btn btn-outline-dark">GO!</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+<script type="text/javascript">
+        var sButton = $(document).find('#SearchButton');
+        var sQuery = $(document).find('#SearchQuery');
+        sButton.hide();
+        sQuery.hide();
+</script>
+}

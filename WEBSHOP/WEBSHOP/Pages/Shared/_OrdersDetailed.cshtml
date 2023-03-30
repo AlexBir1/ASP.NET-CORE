@@ -1,0 +1,50 @@
+﻿@model List<WEBSHOP.Domain.ViewModels.OrdersViewModel>
+
+<div class="modal fade" id="OrderFullList">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Choose order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="orderList">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4" id="@item.Id">
+                            <div class="card">
+                                <div class="card-header">
+                                    <label class="card-title">
+                                        Order №@item.Id
+                                    </label>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-group">
+                                         <label class="card-text">Order was created: @item.DateCreate.ToString("dd.MM.yyyy")</label> 
+                                    </div>
+                                    <div class="card-group">
+                                         <label class="card-text">Order`s price: @item.FullCost</label> 
+                                    </div>
+                                    <div class="card-group">
+                                        <label class="card-text">Order`s maker: @item.Owner.Fullname</label> 
+                                    </div>
+                                    <div class="card-group">
+                                       <label class="card-text">Maker`s phone: @item.Owner.Phone</label> 
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button id="SelectOrder_@item.Id" class="btn btn-success" type="button" data-orderid="@item.Id">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="CloseBtn" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿
+@model WEBSHOP.Domain.ViewModels.ProductCUViewModel
+
+<div class="modal fade" id="ProdEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="ProdEditForm" asp-page="Product" asp-page-handler="Edit" method="post">
+                    <div class="form-group">
+                        <label for="ProdId" class="form-label">ID</label>
+                        <input asp-for="Id" class="form-control" id="ProdId" placeholder="ID" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="ProdTitle" class="form-label">Title</label>
+                        <input asp-for="Title" class="form-control" id="ProdTitle" placeholder="Enter title">
+                        <span class="form-text text-danger" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="ProdCost" class="form-label">Cost</label>
+                        <input asp-for="Cost" class="form-control" id="ProdCost" placeholder="Enter title">
+                        <span class="form-text text-danger" asp-validation-for="Cost"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="ProdQ" class="form-label">Quantity</label>
+                        <input asp-for="Quantity" class="form-control" id="ProdQ" placeholder="Enter quantity">
+                        <span class="form-text text-danger" asp-validation-for="Quantity"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="ProdMnf" class="form-label">Manufactorer</label>
+                        <select asp-for="ProductManufactorer" class="form-select" id="ProdMnf" asp-items="@Model.selectMnf"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ProdUnit" class="form-label">Unit</label>
+                        <select asp-for="ProductUnit" class="form-select" id="ProdUnit" asp-items="@Model.selectUnit"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ProdType" class="form-label">Type</label>
+                        <select asp-for="ProductType" class="form-select" id="ProdType" asp-items="@Model.selectType"></select>
+                    </div>
+                    <div class="form-group">
+                        <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                    </div>
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="SaveBtn" type="button" class="btn btn-secondary"><i class="bi bi-cassette"></i> Save</button>
+                <button id="DiscardBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Discard</button>
+            </div>
+        </div>
+    </div>
+</div>

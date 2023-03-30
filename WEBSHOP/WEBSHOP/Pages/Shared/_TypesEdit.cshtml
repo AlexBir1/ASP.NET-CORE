@@ -1,0 +1,41 @@
+﻿@using WEBSHOP.Domain.ViewModels
+
+@model WEBSHOP.Domain.ViewModels.TypesViewModel
+
+<div class="modal fade" id="TypeEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Type info</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="TypeEditForm" asp-page="/Types" asp-page-handler="Edit">
+                    <div class="form-group">
+                        <label id="TypeIdIfCh" for="TypeId" class="form-label">ID</label>
+                        <input asp-for="Id" value="@Model.Id" class="form-control" id="TypeId" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label id="TypeTitleIfCh" for="TypeTitle" class="form-label">Title</label>
+                        <input asp-for="Title" value="@Model.Title" class="form-control" id="TypeTitle" placeholder="Change title">
+                        <span class="form-text text-danger" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                    </div>
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div id="btnWhenEdit">
+                    <button id="SaveBtn" type="button" class="btn btn-secondary"><i class="bi bi-cassette"></i> Save changes</button>
+                    <button data-bs-dismiss="modal" type="button" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Discard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

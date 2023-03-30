@@ -1,0 +1,65 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+
+}
+
+<div class="text-center">
+    <label id="MainLabel" class="font-weight-normal fs-1" style="display:none">Welcome to The Shop</label>
+    <br />
+    <label id="SubmainLabel" class="font-weight-normal fs-4" style="display:none">Buy here and get more comfortable ;)</label>
+</div>
+
+<br />
+<br />
+<br />
+
+<div class="text-center">
+    <label id="SubLabel" class="font-weight-normal fs-4" style="display:none">Choose category you want and let`s go shopping!</label>
+</div>
+
+<div class="row" style="justify-content:center">
+    @foreach (var prodType in Model.TypesList)
+    {
+        <div class="col-lg-3" style="height:300px">
+            <div class="card" id="TypeOfProd_@prodType.Id" style="display:none">
+                <div class="card-header text-center">
+                    <label class="card-title fs-3">@prodType.Title</label>
+                </div>
+
+                <div class="card-body">
+                    <div class="card-img text-center">
+                        <img asp-append-version="true" src="~/Imgs/1.png" width="200" height="200" />
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row text-center">
+                        <div class="col">
+                            <a class="btn btn-outline-dark" asp-page="Product" asp-page-handler="ByType" asp-route-type_id="@prodType.Id">Go here :)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts
+{
+<script type="text/javascript">
+            $(document).ready(function()
+        {
+            $('#MainLabel').fadeIn(300);
+            $('#SubmainLabel').fadeIn(500);
+            $('#SubLabel').fadeIn(700);
+            $('.card').fadeIn(1000);
+        })
+
+            var sButton = $(document).find('#SearchButton');
+            var sQuery = $(document).find('#SearchQuery');
+            sButton.hide();
+            sQuery.hide();
+</script>
+}

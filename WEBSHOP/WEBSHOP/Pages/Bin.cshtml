@@ -1,0 +1,58 @@
+﻿@page
+@model WEBSHOP.Pages.BinModel
+@{
+}
+
+<div id="MainDiv">
+    <div class="text-center">
+        <label id="MainLabel" class="font-weight-normal fs-1">Cart</label>
+    </div>
+
+    <br />
+    <br />
+    
+    <div class="card" style="justify-content:center">
+        <div class="card-body">
+            
+        
+    <div class="row" style="justify-content:center">
+        <div class="col-lg-8" style="overflow-y:scroll; height:400px">
+            <table class="table table-hover" >
+                <thead>
+                    <tr class="table-active">
+                        <th scope="col">Id</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var sProd in Model.SelectedProducts)
+                    {
+                        <tr class="table-active" id="SelectedProd_@sProd.Id">
+                            <th scope="row">@sProd.Product.Id</th>
+                            <td>@sProd.Product.Title</td>
+                            <td>@sProd.Product.Cost</td>
+                            <td>
+                                <a class="btn btn-danger" asp-page-handler="Delete" asp-route-Id="@sProd.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    <div class="card-footer">
+    <div class="row text-center">
+        <div class="col text-right">
+            <a id="CrtNOrder" class="btn btn-success" asp-page-handler="ToOrder">Confirm order</a>
+        </div>
+        <div class="col text-left">
+            <a class="btn btn-secondary" asp-page-handler="DeleteAllByUserId" asp-route-UserId="@int.Parse(User.FindFirstValue(ClaimTypes.Sid))">Clear cart</a>
+        </div>
+    </div>
+    </div>
+
+</div>
+</div>

@@ -1,0 +1,129 @@
+﻿@using System.Security.Claims
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WEBSHOP</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Zephyr.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="jquery-ui.css" />
+</head>
+<body>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <header class="fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-page="/Index" asp-page-handler="Menu"><i class="bi bi-list-ul"></i></a>
+                    <a class="navbar-brand" asp-page="/Index"><i class="bi bi-basket"></i> SHOP</a>
+                    <div class="collapse navbar-collapse" id="navbarColor02">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="Product"><i class="bi bi-columns-gap"></i> Products` catalog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="Types"><i class="bi bi-list-ul"></i> Product types</a>
+                            </li>
+                            @if (User.IsInRole("Customer"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-page="Orders" asp-page-handler="ByUserId"><i class="bi bi-bag"></i> Orders</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-page="Bin" asp-page-handler="ByUserId" asp-route-Id="@User.FindFirst(ClaimTypes.Sid).Value"><i class="bi bi-cart4"></i> Cart</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-page="PaymentMethod"><i class="bi bi-credit-card"></i> Cards</a>
+                                </li>
+                            }
+                            @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-page="Bin"><i class="bi bi-cart4"></i> Bin</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-page="Orders"><i class="bi bi-bag"></i> Orders</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-page="Manufactorer"><i class="bi bi-list-ul"></i> Manufactorers</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-page="Unit"><i class="bi bi-boxes"></i> Units</a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="User" asp-page-handler="GetById" asp-route-Id="@User.FindFirst(ClaimTypes.Sid).Value"><i class="bi bi-person-circle"></i> My account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="Index" asp-page-handler="LogOut"><i class="bi bi-door-closed"></i> Log Out</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex">
+                            <input id="SearchQuery" class="form-control me-sm-2" type="search" placeholder="Search">
+                            <button id="SearchButton" class="btn btn-secondary my-2 my-sm-0" type="button">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    }
+    else
+    {
+        <header class="fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-page="/Index"><i class="bi bi-basket"></i> SHOP</a>
+                    <div class="collapse navbar-collapse" id="navbarColor02">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a id="ProductsCatalog" class="nav-link" asp-page="Product"><i class="bi bi-columns-gap"></i> Product`s catalog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="UserLogIn" class="nav-link" asp-page="LogIn"><i class="bi bi-box-arrow-in-down-left"></i> Log In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="UserRegister" class="nav-link" asp-page="Register"><i class="bi bi-door-open"></i> Register</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex">
+                            <input id="SearchQuery" class="form-control me-sm-2" type="search" placeholder="Search">
+                            <button id="SearchButton" class="btn btn-secondary my-2 my-sm-0" type="button">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    }
+    <div class="container">
+        <main role="main" class="pb-3">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            @RenderBody()
+            <br />
+            <br />
+            <br />
+        </main>
+    </div>
+
+    <footer id="SiteBottom" class="border-top fixed-bottom">
+        <div class="text-right bg-dark" style="justify-content:right">
+            <button id="SiteMenu" type="button" class="btn btn-dark"><i class="bi bi-list-ul"></i></button>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
