@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "by63gDNG+doyElym7TK3xipEnahUQSk9ZUE6hZyfNAyGwtCqLjIzSdp9PvI6vlMlmo5xjir2e3N8Qovnft/Ang==",
+  "dgSpecHash": "ZaTR2iXF6XlCRSi8i24P7ojLlsnxjBSbloixUoup2ywA4AT/YB5cUbiiDByrK1D1jwabKZ0CtC7K0NzL57VDvA==",
   "success": true,
-  "projectFilePath": "D:\\elfbar_shop\\elfbar_shop\\elfbar_shop.csproj",
+  "projectFilePath": "D:\\ASP.NET-CORE\\elfbar_shop\\elfbar_shop\\elfbar_shop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ALEXBIR\\.nuget\\packages\\google.protobuf\\3.19.4\\google.protobuf.3.19.4.nupkg.sha512",
     "C:\\Users\\ALEXBIR\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",

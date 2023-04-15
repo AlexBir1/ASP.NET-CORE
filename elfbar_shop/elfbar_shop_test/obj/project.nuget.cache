@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SQXvokSyLCt76r2C//KlSCDcjNsZbCS9MQ8Bl1O3IBKik2BnatIJQ+Uz4KPpb3OOoKkobxJcKI6YuzRSIf9kpA==",
+  "dgSpecHash": "GbsCSy8dD0c4xc1HO+eiKJiRQMXYORMEqL63uol7pQjKYXCpyXnw2HqvTym/QD6UIyPzSR59wQHHpi8UQ7eveg==",
   "success": true,
-  "projectFilePath": "D:\\elfbar_shop\\elfbar_shop_test\\elfbar_shop_test.csproj",
+  "projectFilePath": "D:\\ASP.NET-CORE\\elfbar_shop\\elfbar_shop_test\\elfbar_shop_test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ALEXBIR\\.nuget\\packages\\autofixture\\4.17.0\\autofixture.4.17.0.nupkg.sha512",
     "C:\\Users\\ALEXBIR\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
