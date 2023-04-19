@@ -1,0 +1,12 @@
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\bin\Debug\net5.0\WebSchoolMVC.Domain.deps.json
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\bin\Debug\net5.0\WebSchoolMVC.Domain.dll
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\bin\Debug\net5.0\ref\WebSchoolMVC.Domain.dll
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\bin\Debug\net5.0\WebSchoolMVC.Domain.pdb
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\obj\Debug\net5.0\WebSchoolMVC.Domain.csproj.AssemblyReference.cache
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\obj\Debug\net5.0\WebSchoolMVC.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\obj\Debug\net5.0\WebSchoolMVC.Domain.AssemblyInfoInputs.cache
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\obj\Debug\net5.0\WebSchoolMVC.Domain.AssemblyInfo.cs
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\obj\Debug\net5.0\WebSchoolMVC.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\obj\Debug\net5.0\WebSchoolMVC.Domain.dll
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\obj\Debug\net5.0\ref\WebSchoolMVC.Domain.dll
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.Domain\obj\Debug\net5.0\WebSchoolMVC.Domain.pdb

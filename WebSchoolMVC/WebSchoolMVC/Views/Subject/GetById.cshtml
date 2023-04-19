@@ -1,0 +1,72 @@
+﻿@using System.Security.Claims
+@model WebSchoolMVC.Domain.Entity.Subject
+
+<div id="mainDiv">
+    <div class="text-lg-center fs-1" style="margin-bottom:60px">
+        Subjects <i id="stCreate" class="bi bi-plus-circle link-success" data-url="@Url.Action("Create","Subject")" onclick="openPartialClick(this)" style="cursor:pointer"></i>
+    </div>
+    <div id="subjectList" class="row" style="justify-content:center">
+        <div class="col-lg-7">
+            <div class="card">
+                <div class="card-header" position="relative">
+                    <div class="dropdown" style="position:absolute; top:20px; right:20px; ">
+                        <a class="btn btn-outline-primary" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-list-ul" style="font-size:24px"></i></a>
+                        <div class="dropdown-menu">
+                            @if (User.IsInRole(UserStatus.Teacher.ToString()) && !Model.Teachers.Any(x => x.Id == int.Parse(User.FindFirst(ClaimTypes.Sid).Value)))
+                            {
+                                <a class="dropdown-item" asp-action="AddTeacher" asp-route-Subject_Id="@Model.Id" asp-route-Teacher_Id="@int.Parse(User.FindFirst(ClaimTypes.Sid).Value)"><i class="bi bi-person-plus"></i> Begin teaching</a>
+                                <div class="dropdown-divider"></div>
+                            }
+                            else if (User.IsInRole(UserStatus.Teacher.ToString()) && Model.Teachers.Any(x => x.Id == int.Parse(User.FindFirst(ClaimTypes.Sid).Value)))
+                            {
+                                <a class="dropdown-item" asp-action="RemoveTeacher" asp-route-Subject_Id="@Model.Id" asp-route-Teacher_Id="@int.Parse(User.FindFirst(ClaimTypes.Sid).Value)"><i class="bi bi-person-dash"></i> End teaching</a>
+                                <div class="dropdown-divider"></div>
+                            }
+                            <button class="dropdown-item" onclick="openPartialClick(this)" asp-action="Update" asp-route-Id="@Model.Id"><i class="bi bi-pencil-square"></i> Edit</button>
+                            <button class="dropdown-item" onclick="openPartialClick(this)" asp-action="Delete" asp-route-Id="@Model.Id"><i class="bi bi-trash3-fill"></i> Delete</button>
+                        </div>
+                    </div>
+                    <label class="card-title fs-3">
+                        @Model.Title
+                    </label>
+                    <br />
+                    <label class="card-subtitle">
+                        SUBJECT ID: @Model.Id
+                    </label>
+                </div>
+                <div class="card-body">
+                    <p class="card-title fs-4">Teachers</p>
+                    <div class="row" style="justify-content:center; overflow-y:scroll; max-height:300px">
+                        @foreach (var x in Model.Teachers)
+                        {
+                            <div class="col-lg-6" style="margin-bottom:25px">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <label class="card-title fs-3" style="margin-bottom:6px">
+                                            @x.Fullname
+                                        </label>
+                                        <label class="card-subtitle">
+                                            TEACHER ID: @x.Id
+                                        </label>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-group">
+                                            <label class="card-text">Phone: @x.MobileNumber</label>
+                                        </div>
+                                        <div class="card-group">
+                                            <a class="link-primary" asp-controller="Teacher" asp-action="GetById" asp-route-Id="@x.Id">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+
+                </div>
+                <div class="card-footer" style="display:flex; justify-content: center">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

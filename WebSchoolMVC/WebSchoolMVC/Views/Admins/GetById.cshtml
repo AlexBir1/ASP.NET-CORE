@@ -1,0 +1,57 @@
+﻿@model WebSchoolMVC.Domain.Entity.Admins
+
+<div id="mainDiv">
+    <div class="text-lg-center fs-1" style="margin-bottom:60px">
+        Student page <i id="stCreate" class="bi bi-plus-circle link-success" data-url="@Url.Action("Create","Admins")" onclick="openPartialClick(this)" style="cursor:pointer"></i>
+    </div>
+        <div class="row text-center">
+            <form asp-controller="Admins" asp-action="GetAll" method="get">
+                <label class="form-text fs-5 text-dark">Order by: </label>
+                <select name="adminOrderByCondition" class="form-select-lg" asp-items="@Html.GetEnumSelectList<AdminsOrderBy>()">
+                </select>
+                <button class="btn btn-secondary" type="submit">Select</button>
+            </form>
+        </div>
+        <br />
+            <div id="students" class="row border bg-secondary card-list">
+            <div id="admin_@Model.Id" class="col-lg-4" style="margin-bottom:25px">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="dropdown" style="position:absolute; top:20px; right:20px; ">
+                            <a class="btn btn-outline-primary" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-list-ul" style="font-size:24px"></i></a>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item" onclick="openPartialClick(this)" asp-action="Update" asp-route-Id="@Model.Id"><i class="bi bi-pencil-square"></i> Edit</button>
+                                <button class="dropdown-item" onclick="openPartialClick(this)" asp-action="Delete" asp-route-Id="@Model.Id"><i class="bi bi-trash3-fill"></i> Delete</button>
+                            </div>
+                        </div>
+                        <label class="card-title fs-3">
+                            @Model.Fullname
+                        </label>
+                        <br />
+                        <label class="card-subtitle">
+                            ADMIN ID: @Model.Id
+                        </label>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-group">
+                            <label class="cart-text">
+                                Mobile number: @Model.MobileNumber
+                            </label>
+                        </div>
+                        <div class="card-group">
+                            <label class="cart-text">
+                                Mobile number: @Model.Login
+                            </label>
+                        </div>
+                    </div>
+                    <div class="card-footer" >
+                        <div class="row" style="justify-content:center">
+                            <div class="col-lg-4">
+                                <a class="btn btn-primary" asp-action="GetById" asp-route-Id="@Model.Id">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

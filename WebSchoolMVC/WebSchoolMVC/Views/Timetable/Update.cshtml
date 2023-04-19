@@ -1,0 +1,52 @@
+﻿@model WebSchoolMVC.Models.TimetableViewModel
+
+<div class="modal fade" id="UpdateTimetable">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update timetable (TID: @Model.Id)</h5>
+                <button type="button" class="btn-close" onclick="closePartialClick(this)" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="SubjectData" asp-controller="Timetable" asp-action="Update" method="post">
+                    <input asp-for="Id" type="hidden" value="@Model.Id" />
+                    <div class="form-group">
+                        <label for="tTopic" class="form-label">Topic</label>
+                        <input id="tTopic" class="form-control" asp-for="Topic" type="text" placeholder="Enter topic" /> 
+                        <span asp-validation-for="Topic" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="sDate" class="form-label">Start time</label>
+                        <input id="sDate" class="form-control" asp-for="StartDateTime" type="datetime-local" /> 
+                    </div>
+                    <div class="form-group">
+                        <label for="eDate" class="form-label">End time</label>
+                        <input id="eDate" class="form-control" asp-for="EndDateTime" type="datetime-local" /> 
+                    </div>
+                    <div class="form-group">
+                        <label for="tRoom" class="form-label">Room</label>
+                        <select asp-for="Room_Id" class="form-select" asp-items="@Model.RoomSelectList"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tSubject" class="form-label">Subject</label>
+                        <select asp-for="Subject_Id" class="form-select" asp-items="@Model.SubjectSelectList"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tGroup" class="form-label">Group</label>
+                        <select asp-for="Group_Id" class="form-select" asp-items="@Model.GroupSelectList"></select>
+                    </div>
+                    <div class="form-group">
+                        <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                    </div>
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                </form>
+            </div>
+            <div class="modal-footer" style="justify-content:center">
+                <button onclick="saveClick(this)" type="button" class="btn btn-success"><i class="bi bi-cassette"></i> Add</button>
+                <button onclick="closePartialClick(this)" type="button" class="btn btn-danger"><i class="bi bi-x-circle"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

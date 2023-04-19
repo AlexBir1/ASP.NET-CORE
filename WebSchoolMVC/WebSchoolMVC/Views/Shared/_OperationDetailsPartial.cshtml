@@ -1,0 +1,50 @@
+﻿@model WebSchoolMVC.Models.OperationViewModel
+
+<div class="modal fade" id="operationDetails" style="position:center">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Info</h5>
+                <button type="button" class="btn-close" onclick="closePartialClick(this)" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @if (Model.Status == OperationStatus.Succeeded)
+                {
+                    <div class="row">
+                        <div class="col text-center">
+                            <i class="bi bi-bookmark-check link-success" style="font-size:200px"></i>
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content:center">
+                        <div class="col text-center">
+                            OPERATION SUCCEEDED!
+                        </div>
+                    </div>
+                }
+                else if (Model.Status == OperationStatus.Failed)
+                {
+                    <div class="row" style="justify-content:center">
+                        <div class="col">
+                            <i class="bi bi-bookmark-dash link-danger" style="height:32px; width:32px"></i>
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content:center">
+                        <div class="col">
+                            OPERATION FAILED!
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content:center">
+                        <div class="col">
+                            Details: @Model.Message
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer" style="display:flex; justify-content:center">
+                <button onclick="closeAfterOperationPartialClick(this)" type="button" class="btn btn-primary"><i class="bi bi-journal-check"></i> OK</button>
+            </div>
+        </div>
+    </div>
+</div>

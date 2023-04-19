@@ -1,0 +1,32 @@
+﻿@model WebSchoolMVC.Models.GroupViewModel
+
+<div class="modal fade" id="UpdateGroup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update group (GID: @Model.Id)</h5>
+                <button type="button" class="btn-close" onclick="closePartialClick(this)" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="GroupData" asp-controller="Group" asp-action="Update" method="post">
+                    <input asp-for="Id" type="hidden" value="@Model.Id" />
+                    <div class="form-group">
+                        <label for="gTitle" class="form-label">Title</label>
+                        <input asp-for="Title" class="form-control" id="gTitle" placeholder="Enter title">
+                        <span class="form-text text-danger" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                    </div>
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                </form>
+            </div>
+            <div class="modal-footer" style="justify-content:center">
+                <button onclick="saveClick(this)" type="button" class="btn btn-success"><i class="bi bi-cassette"></i> Save</button>
+                <button onclick="closePartialClick(this)" type="button" class="btn btn-danger"><i class="bi bi-x-circle"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

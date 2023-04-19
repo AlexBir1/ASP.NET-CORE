@@ -1,0 +1,56 @@
+﻿
+@model List<WebSchoolMVC.Domain.Entity.Student>
+<div id="mainDiv">
+    <div class="text-lg-center fs-1" style="margin-bottom:60px">
+        Student page <i id="stCreate" class="bi bi-plus-circle link-success" data-url="@Url.Action("Create","Student")" onclick="openPartialClick(this)" style="cursor:pointer"></i>
+    </div>
+        <div class="row text-center">
+            <form asp-controller="Student" asp-action="GetAll" method="get">
+                <label class="form-text fs-5 text-dark">Order by: </label>
+                <select name="studentOrderByCondition" class="form-select-lg" asp-items="@Html.GetEnumSelectList<StudentOrderBy>()">
+                </select>
+                <button class="btn btn-secondary" type="submit">Select</button>
+            </form>
+        </div>
+        <br />
+            <div id="students" class="row border bg-secondary card-list">
+        @foreach (var x in Model)
+        {
+            <div id="student_@x.Id" class="col-lg-4" style="margin-bottom:25px">
+                <div class="card">
+                    <div class="card-header">
+                        <label class="card-title fs-3">
+                            @x.Fullname
+                        </label>
+                        <br />
+                        <label class="card-subtitle">
+                            STUDENT ID: @x.Id
+                        </label>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-group">
+                            <label class="cart-text">
+                                Mobile number: @x.MobileNumber
+                            </label>
+                        </div>
+                        <div class="card-group">
+                            <label class="cart-text">
+                                Group: @x.Group.Title
+                            </label>
+                        </div>
+                    </div>
+                    <div class="card-footer" >
+                        <div class="row" style="justify-content:center">
+                            <div class="col-lg-4">
+                                <a class="btn btn-primary" asp-action="GetById" asp-route-Id="@x.Id">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+

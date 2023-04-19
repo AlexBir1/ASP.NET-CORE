@@ -1,0 +1,59 @@
+﻿@model WebSchoolMVC.Domain.Entity.Student
+
+<div id="mainDiv">
+    <div class="text-lg-center fs-1" style="margin-bottom:60px">
+        Student`s details
+    </div>
+    <br />
+    <div class="row" style="justify-content:center">
+        <div id="student" class="col-lg-6">
+            <div class="card">
+                <div class="card-header" style="position:relative">
+                    <div class="dropdown" style="position:absolute; top:20px; right:20px; ">
+                        <a class="btn btn-outline-primary" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-list-ul" style="font-size:24px"></i></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-controller="Journal" asp-action="GetAll" asp-route-Student_Id="@Model.Id">Grades</a>
+                            @if (User.IsInRole(UserStatus.Teacher.ToString()) || User.IsInRole(UserStatus.Admin.ToString()))
+                            {
+                                <button class="dropdown-item" onclick="openPartialClick(this)" asp-controller="Journal" asp-action="Create" asp-route-Student_Id="@Model.Id">New grade</button>
+                            }
+                            <button class="dropdown-item" onclick="openPartialClick(this)" asp-action="Update" asp-route-Id="@Model.Id"><i class="bi bi-pencil-square"></i> Edit</button>
+                                <button class="dropdown-item" onclick="openPartialClick(this)" asp-action="Delete" asp-route-Id="@Model.Id"><i class="bi bi-trash3-fill"></i> Delete</button>
+                        </div>
+                    </div>
+                    <label class="card-title fs-3">
+                        @Model.Fullname
+                    </label>
+                    <br />
+                    <label class="card-subtitle">
+                        STUDENT ID: @Model.Id
+                    </label>
+                </div>
+                <div class="card-body">
+                    <div class="card-group">
+                        <label class="cart-text">
+                            Group: @Model.Group.Title
+                        </label>
+                    </div>
+                    <div class="card-group">
+                        <label class="cart-text">
+                            Address: @Model.Address
+                        </label>
+                    </div>
+                    <div class="card-group">
+                        <label class="cart-text">
+                            Mobile number: @Model.MobileNumber
+                        </label>
+                    </div>
+                    <div class="card-group">
+                        <label class="cart-text">
+                            Login: @Model.Login
+                        </label>
+                    </div>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

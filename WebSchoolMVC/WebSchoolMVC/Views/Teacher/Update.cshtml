@@ -1,0 +1,52 @@
+﻿@model WebSchoolMVC.Models.TeacherViewModel
+
+<div class="modal fade" id="UpdateTeacher" style="position:center">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Teacher (TID: @Model.Id)</h5>
+                <button type="button" class="btn-close" onclick="closePartialClick(this)" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="TeacherData" asp-controller="Teacher" asp-action="Update" method="post">
+                    <input asp-for="Id" type="hidden" value="@Model.Id" />
+                    <div class="form-group">
+                        <label for="tFullname" class="form-label">Fullname</label>
+                        <input asp-for="Fullname" class="form-control" id="tFullname" placeholder="Enter fullname" value="@Model.Fullname">
+                        <span class="form-text text-danger" asp-validation-for="Fullname"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="tMobileNumber" class="form-label">Mobile phone</label>
+                        <input asp-for="MobileNumber" class="form-control" id="tMobileNumber" placeholder="Enter mobile phone" value="@Model.MobileNumber">
+                        <span class="form-text text-danger" asp-validation-for="MobileNumber"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="tAddress" class="form-label">Address</label>
+                        <input asp-for="Address" class="form-control" id="tAddress" placeholder="Enter address" value="@Model.Address">
+                        <span class="form-text text-danger" asp-validation-for="Address"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="tLogin" class="form-label">Login</label>
+                        <input asp-for="Login" class="form-control" id="tLogin" placeholder="Enter login" value="@Model.Login">
+                        <span class="form-text text-danger" asp-validation-for="Login"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="tPassword" class="form-label">Password</label>
+                        <input asp-for="Password" class="form-control" id="tPassword" placeholder="Enter password" value="@Model.Password">
+                        <span class="form-text text-danger" asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group">
+                        <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                    </div>
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                </form>
+            </div>
+            <div class="modal-footer" style="justify-content:center">
+                <button onclick="saveClick(this)" type="button" class="btn btn-success"><i class="bi bi-cassette"></i> Save</button>
+                <button onclick="closePartialClick(this)" type="button" class="btn btn-danger"><i class="bi bi-x-circle"></i> Discard</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+﻿.card-list {
+    justify-content: center;
+    overflow-y: scroll;
+    min-height: 250px;
+    max-height: 510px;
+}
+.card-list-nobody {
+    justify-content: center;
+    overflow-y: scroll;
+    min-height: 180px;
+    max-height: 400px;
+}

@@ -1,0 +1,150 @@
+﻿@model WebSchoolMVC.Domain.Entity.Teacher
+
+@if (Model is null)
+{
+    <h3>This teacher has not found</h3>
+}
+else
+{
+    <div id="mainDiv">
+        <div class="text-lg-center fs-1" style="margin-bottom:60px">
+            Teacher`s details
+        </div>
+        <br />
+        <div class="row" style="justify-content:center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header" position="relative">
+                        <div class="dropdown" style="position:absolute; top:20px; right:20px; ">
+                            <a class="btn btn-outline-primary" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-list-ul" style="font-size:24px"></i></a>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item" onclick="openPartialClick(this)" asp-action="Update" asp-route-Id="@Model.Id"><i class="bi bi-pencil-square"></i> Edit</button>
+                                <button class="dropdown-item" onclick="openPartialClick(this)" asp-action="Delete" asp-route-Id="@Model.Id"><i class="bi bi-trash3-fill"></i> Delete</button>
+                            </div>
+                        </div>
+                        <label class="card-title fs-3">
+                            @Model.Fullname
+                        </label>
+                        <br />
+                        <label class="card-subtitle">
+                            TEACHER ID: @Model.Id
+                        </label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                <div class="card-group">
+                                    <label class="cart-text fs-5">
+                                        Mobile number: @Model.MobileNumber
+                                    </label>
+                                </div>
+                                <div class="card-group">
+                                    <label class="cart-text fs-5">
+                                        Address: @Model.Address
+                                    </label>
+                                </div>
+                                <div class="card-group">
+                                    <label class="cart-text fs-5">
+                                        Login: @Model.Login
+                                    </label>
+                                </div>
+                                </div>
+                                <div class="row" style="margin-top:25px">
+                                    <div class="col-lg-12">
+                                        <div class="text-left font-weight-bold">
+                                            <label class="card-title">List of subjects:</label>
+                                        </div>
+                                        @if (Model.Subjects != null)
+                                        {
+                                            <div style="display:grid; grid-template-columns: 1fr; overflow-y:scroll; max-height: 170px; border: 1px solid lightgray; row-gap:6px; background-color:gray">
+                                                @foreach (var y in Model.Subjects)
+                                                {
+                                                    <div class="card border-dark">
+                                                        <div class="card-body">
+                                                            <div class="card-group">
+                                                                Title: @y.Title
+                                                            </div>
+                                                            <div class="card-group">
+                                                                <a class="link-success" asp-controller="Subject" asp-action="GetById" asp-route-Id="@y.Id">Details</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="text-center">
+                                                <label class="card-title">No subjects.</label>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="text-left font-weight-bold">
+                                            <label class="card-title">Curator of the group:</label>
+                                        </div>
+                                        @if (Model.GroupUnderLeading != null)
+                                        {
+                                            <div class="card border-dark">
+                                                <div class="card-body">
+                                                    <div class="card-group">
+                                                        Title: @Model.GroupUnderLeading.Title
+                                                    </div>
+                                                    <div class="card-group">
+                                                        <a class="link-success" asp-controller="Group" asp-action="GetById" asp-route-Id="@Model.GroupUnderLeading.Id">Details</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="text-center">
+                                                <label class="card-title">No group.</label>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:25px">
+                                    <div class="col-lg-12">
+                                        <div class="text-left font-weight-bold">
+                                            <label class="card-title">Caretaker of the room:</label>
+                                        </div>
+                                        @if (Model.Room != null)
+                                        {
+                                            <div class="card border-dark">
+                                                <div class="card-body">
+                                                    <div class="card-group">
+                                                        Number: @Model.Room.Number
+                                                    </div>
+                                                    <div class="card-group">
+                                                        Floor: @Model.Room.Floor
+                                                    </div>
+                                                    <div class="card-group">
+                                                        <a class="link-success" asp-controller="Room" asp-action="GetById" asp-route-Id="@Model.Room.Id">Details</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="text-center">
+                                                <label class="card-title">No room.</label>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

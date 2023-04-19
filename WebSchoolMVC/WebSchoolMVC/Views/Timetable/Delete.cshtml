@@ -1,0 +1,47 @@
+﻿@model WebSchoolMVC.Domain.Entity.Timetable
+
+<div class="modal fade" id="DeleteTimetable">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete timetable (ID: @Model.Id)</h5>
+                <button type="button" class="btn-close" onclick="closePartialClick(this)" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="TimetableData" asp-controller="Timetable" asp-action="Delete" method="post">
+                    <input asp-for="Id" type="hidden" value="@Model.Id" />
+                    <div class="form-group">
+                        <label id="tTopic" class="form-label">Topic: @Model.Topic</label> 
+                        <input asp-for="Topic" value="@Model.Topic" type="hidden">
+                    </div>
+                    <div class="form-group">
+                        <label id="tStartDateTime" class="form-label">Mobile phone: @Model.StartDateTime</label>
+                        <input asp-for="StartDateTime" value="@Model.StartDateTime" type="hidden">
+                    </div>
+                    <div class="form-group">
+                        <label id="tEndDateTime" class="form-label">Address: @Model.EndDateTime</label>
+                        <input asp-for="EndDateTime" value="@Model.EndDateTime" type="hidden">
+                    </div>
+                    <div class="form-group">
+                        <label id="tGroup" class="form-label">Group: @Model.Group.Title</label>
+                        <input asp-for="Group.Title" value="@Model.Group.Title" type="hidden">
+                    </div>
+                    <div class="form-group">
+                        <label id="tSubject" class="form-label">Subject: @Model.Subject.Title</label>
+                        <input asp-for="Subject.Title" value="@Model.Subject.Title" type="hidden">
+                    </div>
+                    <div class="form-group">
+                        <label id="tRoom" class="form-label">Room: @Model.Room.Number</label>
+                        <input asp-for="Room.Number" value="@Model.Room.Number" type="hidden">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" style="justify-content:center">
+                <button onclick="removeClick(this)" type="button" class="btn btn-danger"><i class="bi bi-cassette"></i> Proceed</button>
+                <button onclick="closePartialClick(this)" type="button" class="btn btn-success"><i class="bi bi-x-circle"></i> Discard</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model List<WebSchoolMVC.Domain.Entity.Timetable>
+
+<div id="mainDiv">
+    <div class="text-center fs-1" style="margin-bottom:60px">
+        Timetables <i id="stCreate" class="bi bi-plus-circle link-success" data-url="@Url.Action("Create","Timetable")" onclick="openPartialClick(this)" style="cursor:pointer"></i>
+    </div>
+    <div class="row" style="justify-content:center">
+        @foreach (var x in Model)
+        {
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <label class="card-title fs-3" style="margin-bottom:5px">
+                            @x.Topic
+                        </label>
+                        <label class="card-subtitle" style="margin-bottom:4px;display:block">
+                            TIMETABLE ID: @x.Id
+                        </label>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-group">
+                            <label class="card-text">Starts: @x.StartDateTime.ToString("MM/dd/yyyy") - @x.StartDateTime.ToString("HH:mm")</label>
+                        </div>
+                        <div class="card-group">
+                            <label class="card-text">Ends: @x.EndDateTime.ToString("MM/dd/yyyy") - @x.EndDateTime.ToString("HH:mm")</label>
+                        </div>
+                        <div class="card-group">
+                            <label class="card-text">Group: @x.Group.Title</label>
+                        </div>
+                        <div class="card-group">
+                            <label class="card-text">Subject: @x.Subject.Title</label>
+                        </div>
+                        <div class="card-group">
+                            <label class="card-text">Room: @x.Room.Number</label>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="display:flex; justify-content: center">
+                        <a class="btn btn-primary" asp-action="GetById" asp-route-Id="@x.Id">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

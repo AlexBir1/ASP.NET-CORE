@@ -1,0 +1,15 @@
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\bin\Debug\net5.0\WebSchoolMVC.DataAccess.deps.json
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\bin\Debug\net5.0\WebSchoolMVC.DataAccess.dll
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\bin\Debug\net5.0\ref\WebSchoolMVC.DataAccess.dll
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\bin\Debug\net5.0\WebSchoolMVC.DataAccess.pdb
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\bin\Debug\net5.0\WebSchoolMVC.Domain.dll
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\bin\Debug\net5.0\WebSchoolMVC.Domain.pdb
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\obj\Debug\net5.0\WebSchoolMVC.DataAccess.csproj.AssemblyReference.cache
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\obj\Debug\net5.0\WebSchoolMVC.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\obj\Debug\net5.0\WebSchoolMVC.DataAccess.AssemblyInfoInputs.cache
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\obj\Debug\net5.0\WebSchoolMVC.DataAccess.AssemblyInfo.cs
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\obj\Debug\net5.0\WebSchoolMVC.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\obj\Debug\net5.0\WebSchoolMVC.DataAccess.csproj.CopyComplete
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\obj\Debug\net5.0\WebSchoolMVC.DataAccess.dll
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\obj\Debug\net5.0\ref\WebSchoolMVC.DataAccess.dll
+C:\Users\ALEXBIR\source\repos\WebSchoolMVC\WebSchoolMVC.DataAccess\obj\Debug\net5.0\WebSchoolMVC.DataAccess.pdb

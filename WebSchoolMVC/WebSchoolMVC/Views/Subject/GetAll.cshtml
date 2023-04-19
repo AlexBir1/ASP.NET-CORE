@@ -1,0 +1,26 @@
+﻿@model List<WebSchoolMVC.Domain.Entity.Subject>
+
+<div id="mainDiv">
+    <div class="text-lg-center fs-1" style="margin-bottom:60px">
+        Subjects <i id="stCreate" class="bi bi-plus-circle link-success" data-url="@Url.Action("Create","Subject")" onclick="openPartialClick(this)" style="cursor:pointer"></i>
+    </div>
+    <div id="subjectList" style="display:grid; grid-template-columns: 1fr 1fr 1fr; column-gap:10px; row-gap:25px; max-height:500px; overflow-y: scroll; background-color: rgb(230, 230, 230)">
+        @foreach (var x in Model)
+        {
+            <div class="card">
+                <div class="card-header">
+                        <label class="card-title fs-3">
+                            @x.Title
+                        </label>
+                        <br />
+                        <label class="card-subtitle">
+                            SUBJECT ID: @x.Id
+                        </label>
+                    </div>
+                <div class="card-footer" style="display:flex; justify-content: center">
+                    <a class="btn btn-primary" asp-action="GetById" asp-route-Id="@x.Id">Details</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

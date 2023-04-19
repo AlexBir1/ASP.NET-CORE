@@ -1,0 +1,39 @@
+﻿@model WebSchoolMVC.Domain.Entity.Teacher
+
+<div class="modal fade" id="DeleteTeacher" style="position:center">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Teacher (ID: @Model.Id)</h5>
+                <button type="button" class="btn-close" onclick="closePartialClick(this)" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="TeacherData" asp-controller="Teacher" asp-action="Delete" method="post">
+                    <input asp-for="Id" type="hidden" value="@Model.Id" />
+                    <div class="form-group">
+                        <label id="stFullname" class="form-label">Fullname: @Model.Fullname</label> 
+                        <input asp-for="Fullname" value="@Model.Fullname" type="hidden">
+                    </div>
+                    <div class="form-group">
+                        <label id="stMobileNumber" class="form-label">Mobile phone: @Model.MobileNumber</label>
+                        <input asp-for="MobileNumber" value="@Model.MobileNumber" type="hidden">
+                    </div>
+                    <div class="form-group">
+                        <label id="stAddress" class="form-label">Address: @Model.Address</label>
+                        <input asp-for="Address" value="@Model.Address" type="hidden">
+                    </div>
+                    <div class="form-group">
+                        <label id="stLogin" class="form-label">Login: @Model.Login</label>
+                        <input asp-for="Login" value="@Model.Login" type="hidden">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" style="justify-content:center">
+                <button onclick="removeClick(this)" type="button" class="btn btn-danger"><i class="bi bi-cassette"></i> Proceed</button>
+                <button onclick="closePartialClick(this)" type="button" class="btn btn-success"><i class="bi bi-x-circle"></i> Discard</button>
+            </div>
+        </div>
+    </div>
+</div>

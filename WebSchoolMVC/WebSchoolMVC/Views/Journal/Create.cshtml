@@ -1,0 +1,42 @@
+﻿@model WebSchoolMVC.Models.JournalViewModel
+
+<div class="modal fade" id="CreateNote" style="position:center">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New note</h5>
+                <button type="button" class="btn-close" onclick="closePartialClick(this)" aria-label="Close">
+                    <span area-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="NoteData" asp-controller="Journal" asp-action="Create" method="post">
+                    <div class="form-group">
+                        <label for="gTitle" class="form-label">Student`s ID</label>
+                        <input asp-for="Student_Id" class="form-control" id="gTitle" readonly>
+                        <span class="form-text text-danger" asp-validation-for="Student_Id"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="gTitle" class="form-label">Subject</label>
+                        <select asp-for="Subject_Id" class="form-select" id="gTitle" asp-items="@Model.Subjects">
+                        </select>
+                        <span class="form-text text-danger" asp-validation-for="Subject_Id"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="gTitle" class="form-label">Mark</label>
+                        <input asp-for="Mark" type="number" class="form-control" id="gTitle" placeholder="Enter mark">
+                        <span class="form-text text-danger" asp-validation-for="Mark"></span>
+                    </div>
+                    <div class="form-group">
+                        <div asp-validation-summary="ModelOnly" class="form-text text-danger text-center fs-5"></div>
+                    </div>
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                </form>
+            </div>
+            <div class="modal-footer" style="justify-content:center">
+                <button onclick="saveClick(this)" type="button" class="btn btn-success"><i class="bi bi-cassette"></i> Add</button>
+                <button onclick="closePartialClick(this)" type="button" class="btn btn-danger"><i class="bi bi-x-circle"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

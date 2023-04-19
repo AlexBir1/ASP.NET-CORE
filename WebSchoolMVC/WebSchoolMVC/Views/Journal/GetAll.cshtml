@@ -1,0 +1,38 @@
+﻿@model List<WebSchoolMVC.Domain.Entity.Journal>
+
+<div id="mainDiv">
+    <div class="text-lg-center fs-1" style="margin-bottom:70px">
+        Journal page 
+    </div>
+    <div class="row bg-secondary" style="max-height:500px; justify-content:center; overflow-y:scroll; background-color: rgb(230, 230, 230)">
+        @foreach (var x in Model)
+        {
+            <div id="Note_@x.Id" class="col-lg-4" style="margin-bottom:15px">
+                <div class="card">
+                    <div class="card-header">
+                        <label class="card-title fs-3">
+                            Note №@x.Id
+                        </label>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-group">
+                            Mark: @x.Mark
+                        </div>
+                        <div class="card-group">
+                            Marking date: @x.MarkingDate.ToString("MM/dd/yyyy")
+                        </div>
+                        <div class="card-group">
+                            Student: @x.Student.Fullname
+                        </div>
+                        <div class="card-group">
+                            Subject: @x.Subject.Title
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary" asp-action="GetById" asp-route-Id="@x.Id">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

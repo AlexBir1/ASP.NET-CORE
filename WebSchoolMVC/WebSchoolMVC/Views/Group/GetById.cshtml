@@ -1,0 +1,106 @@
+﻿@model WebSchoolMVC.Domain.Entity.Group
+
+<div id="mainDiv">
+    <div class="text-lg-center fs-1" style="margin-bottom:60px">
+        Group`s details
+    </div>
+    <div class="row" id="groups" style="justify-content:center">
+        <div id="group_@Model.Id" class="col-lg-10">
+            <div class="card">
+                <div class="card-header" style="position:relative">
+                    <div class="dropdown" style="position:absolute; top:20px; right:20px; ">
+                            <a class="btn btn-outline-primary" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-list-ul" style="font-size:24px"></i></a>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item" onclick="openPartialClick(this)" asp-action="Update" asp-route-Id="@Model.Id"><i class="bi bi-pencil-square"></i> Edit</button>
+                                <button class="dropdown-item" onclick="openPartialClick(this)" asp-action="Delete" asp-route-Id="@Model.Id"><i class="bi bi-trash3-fill"></i> Delete</button>
+                            </div>
+                        </div>
+                    <label class="card-title fs-3">
+                        @Model.Title
+                    </label>
+                    <br />
+                    <label class="card-subtitle">
+                        GROUP ID: @Model.Id
+                    </label>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="text-center">
+                        <label class="card-title fs-4">Student list</label>
+                    </div>
+                    <div class="row border-secondary" style="justify-content:center; overflow-y:scroll; height:200px; background-color: lightgrey">
+                        @foreach (var x in Model.Students)
+                        {
+                            <div class="col-lg-6" style="margin-bottom:30px">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <label class="card-title fs-3">
+                                                    @x.Fullname
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6 text-right">
+                                                <small class="card-subtitle">
+                                                    STUDENT ID: @x.Id
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-group">
+                                            <label class="card-text">Mobile number: @x.MobileNumber</label>
+                                        </div>
+                                        <div class="card-group">
+                                            <a class="link-primary" asp-controller="Student" asp-action="GetById" asp-route-Id="@x.Id">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                        </div>
+                        <div class="col-lg-6">
+                            @if (Model.Teacher is not null)
+                    {
+                        <div class="text-center">
+                            <label class="card-title fs-4">Group`s curator</label>
+                        </div>
+                        <div class="row" style="justify-content:center">
+                            <div class="col-lg-8">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <label class="card-title fs-3">
+                                            @Model.Teacher.Fullname
+                                        </label>
+                                        <br />
+                                        <label class="card-subtitle">
+                                            TEACHER ID: @Model.Teacher.Id
+                                        </label>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-group">
+                                            <label class="card-text">Mobile number: @Model.Teacher.MobileNumber</label>
+                                        </div>
+                                        <div class="card-group">
+                                            <a class="link-primary" asp-controller="Teacher" asp-action="GetById" asp-route-Id="@Model.Teacher.Id">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center fs-3">Group doesn`t have a curator.</div>
+                    }
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
