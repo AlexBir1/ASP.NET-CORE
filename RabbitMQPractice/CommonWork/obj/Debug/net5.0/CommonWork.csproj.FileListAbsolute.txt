@@ -1,0 +1,12 @@
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\bin\Debug\net5.0\CommonWork.deps.json
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\bin\Debug\net5.0\CommonWork.dll
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\bin\Debug\net5.0\ref\CommonWork.dll
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\bin\Debug\net5.0\CommonWork.pdb
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\obj\Debug\net5.0\CommonWork.csproj.AssemblyReference.cache
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\obj\Debug\net5.0\CommonWork.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\obj\Debug\net5.0\CommonWork.AssemblyInfoInputs.cache
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\obj\Debug\net5.0\CommonWork.AssemblyInfo.cs
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\obj\Debug\net5.0\CommonWork.csproj.CoreCompileInputs.cache
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\obj\Debug\net5.0\CommonWork.dll
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\obj\Debug\net5.0\ref\CommonWork.dll
+C:\Users\ALEXBIR\source\repos\RabbitMQPractice\CommonWork\obj\Debug\net5.0\CommonWork.pdb
