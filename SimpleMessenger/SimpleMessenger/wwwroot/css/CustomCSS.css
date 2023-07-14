@@ -1,0 +1,64 @@
+﻿.nav-tip {
+    opacity: 0;
+    position: absolute;
+    color: white;
+    background-color: grey;
+    border: 1px solid black;
+    pointer-events:none;
+    left:-20px;
+    bottom:-50px;
+    padding:2px;
+    border-radius:8px;
+    transition: opacity 0.15s; 
+    font-size:13px;
+
+}
+
+.nav-link:hover .nav-tip {
+    opacity:1;
+    z-index:5000;
+}
+
+.button-tip {
+    opacity: 0;
+    position: absolute;
+    color: white;
+    background-color: grey;
+    border: 1px solid black;
+    pointer-events: none;
+    left: -15px;
+    bottom: -70px;
+    padding: 2px;
+    border-radius: 8px;
+    transition: opacity 0.15s;
+    font-size: 13px;
+}
+
+i:hover .button-tip {
+    opacity: 1;
+    z-index: 5000;
+}
+button:hover .button-tip {
+    opacity: 1;
+    z-index: 5000;
+}
+a:hover .button-tip {
+    opacity: 1;
+    z-index: 5000;
+}
+
+.input-tip {
+    opacity: 0;
+    position: absolute;
+    color: white;
+    background-color: grey;
+    border: 1px solid black;
+    pointer-events: none;
+    left: -15px;
+    bottom: -70px;
+    padding: 2px;
+    border-radius: 8px;
+    transition: opacity 0.15s;
+    font-size: 13px;
+}
+

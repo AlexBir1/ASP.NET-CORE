@@ -1,0 +1,12 @@
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\bin\Debug\net5.0\SimpleMessenger.Shared.deps.json
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\bin\Debug\net5.0\SimpleMessenger.Shared.dll
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\bin\Debug\net5.0\ref\SimpleMessenger.Shared.dll
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\bin\Debug\net5.0\SimpleMessenger.Shared.pdb
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\obj\Debug\net5.0\SimpleMessenger.Shared.csproj.AssemblyReference.cache
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\obj\Debug\net5.0\SimpleMessenger.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\obj\Debug\net5.0\SimpleMessenger.Shared.AssemblyInfoInputs.cache
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\obj\Debug\net5.0\SimpleMessenger.Shared.AssemblyInfo.cs
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\obj\Debug\net5.0\SimpleMessenger.Shared.csproj.CoreCompileInputs.cache
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\obj\Debug\net5.0\SimpleMessenger.Shared.dll
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\obj\Debug\net5.0\ref\SimpleMessenger.Shared.dll
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\obj\Debug\net5.0\SimpleMessenger.Shared.pdb

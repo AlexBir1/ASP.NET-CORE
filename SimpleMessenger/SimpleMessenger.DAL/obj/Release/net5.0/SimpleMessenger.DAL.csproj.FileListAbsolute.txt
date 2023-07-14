@@ -1,0 +1,15 @@
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\bin\Release\net5.0\SimpleMessenger.DAL.deps.json
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\bin\Release\net5.0\SimpleMessenger.DAL.dll
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\bin\Release\net5.0\ref\SimpleMessenger.DAL.dll
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\bin\Release\net5.0\SimpleMessenger.DAL.pdb
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\bin\Release\net5.0\SimpleMessenger.Shared.dll
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\bin\Release\net5.0\SimpleMessenger.Shared.pdb
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\obj\Release\net5.0\SimpleMessenger.DAL.csproj.AssemblyReference.cache
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\obj\Release\net5.0\SimpleMessenger.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\obj\Release\net5.0\SimpleMessenger.DAL.AssemblyInfoInputs.cache
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\obj\Release\net5.0\SimpleMessenger.DAL.AssemblyInfo.cs
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\obj\Release\net5.0\SimpleMessenger.DAL.csproj.CoreCompileInputs.cache
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\obj\Release\net5.0\SimpleMessenger.DAL.csproj.CopyComplete
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\obj\Release\net5.0\SimpleMessenger.DAL.dll
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\obj\Release\net5.0\ref\SimpleMessenger.DAL.dll
+C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.DAL\obj\Release\net5.0\SimpleMessenger.DAL.pdb

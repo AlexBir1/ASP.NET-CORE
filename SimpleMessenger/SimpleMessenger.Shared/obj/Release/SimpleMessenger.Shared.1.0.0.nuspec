@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SimpleMessenger.Shared</id>
+    <version>1.0.0</version>
+    <authors>SimpleMessenger.Shared</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="Microsoft.AspNetCore.Identity.EntityFrameworkCore" version="5.0.17" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\ALEXBIR\source\repos\SimpleMessenger\SimpleMessenger.Shared\bin\Release\net5.0\SimpleMessenger.Shared.dll" target="lib\net5.0\SimpleMessenger.Shared.dll" />
+  </files>
+</package>

@@ -1,0 +1,66 @@
+﻿@model SimpleMessenger.Models.AccountUpdateModel
+
+<div id="mainDiv" class="mt-4">
+
+    <form asp-action="Edit" method="post">
+        <div class="card">
+            <input type="hidden" asp-for="Id" />
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group text-center">
+                            <label class="font-weight-bold" style="font-size:30px">Update account`s info</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="justify-content:center">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="usernameField">Username</label>
+                            <input asp-for="Username" id="usernameField" class="form-control" placeholder="Enter your new username" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="nicknameField">Nickname</label>
+                            <input asp-for="Nickname" id="nicknameField" class="form-control" placeholder="Enter your new nickname" />
+                            <span asp-validation-for="Nickname" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginField">Login</label>
+                            <input asp-for="Login" id="loginField" class="form-control" placeholder="Enter your new login" />
+                            <span asp-validation-for="Login" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="passwordOldField">Old password</label>
+                            <input asp-for="OldPassword" id="passwordOldField" class="form-control" style="position:relative" placeholder="Enter your old password" />
+                            <span asp-validation-for="OldPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordNewField">New password</label>
+                            <input asp-for="NewPassword" id="passwordNewField" class="form-control" placeholder="Enter your new password" />
+                            <span asp-validation-for="NewPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordConfirmField">Confirm new password</label>
+                            <input asp-for="ConfirmPassword" id="passwordConfirmField" class="form-control" placeholder="Confirm your new password" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div asp-validation-summary="ModelOnly" class="text-danger text-center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </form>
+</div>
+

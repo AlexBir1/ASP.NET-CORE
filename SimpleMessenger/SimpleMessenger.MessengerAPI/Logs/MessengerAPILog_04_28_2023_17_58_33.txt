@@ -1,0 +1,2 @@
+2023-04-28 17:58:33.206 +03:00 [INF] STARTED NEW LOGGING SESSION
+2023-04-28 17:58:40.782 +03:00 [INF] alexbir`s attempt to login is started.

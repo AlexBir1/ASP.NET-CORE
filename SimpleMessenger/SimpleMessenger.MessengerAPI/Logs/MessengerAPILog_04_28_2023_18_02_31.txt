@@ -1,0 +1,3 @@
+2023-04-28 18:02:31.438 +03:00 [INF] STARTED NEW LOGGING SESSION
+2023-04-28 18:02:42.695 +03:00 [INF] alexbir`s attempt to login is started.
+2023-04-28 18:03:07.696 +03:00 [INF] alexbir`s attempt to login is successfully completed.

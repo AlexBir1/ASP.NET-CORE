@@ -1,0 +1,5 @@
+2023-04-28 18:11:53.002 +03:00 [INF] STARTED NEW LOGGING SESSION
+2023-04-28 18:12:05.232 +03:00 [INF] alexbir`s attempt to login is started.
+2023-04-28 18:12:08.421 +03:00 [INF] alexbir`s attempt to login is successfully completed.
+2023-04-28 18:12:29.862 +03:00 [INF] Retrieving account method is started.
+2023-04-28 18:12:29.873 +03:00 [INF] Retrieving account method has successfully completed.

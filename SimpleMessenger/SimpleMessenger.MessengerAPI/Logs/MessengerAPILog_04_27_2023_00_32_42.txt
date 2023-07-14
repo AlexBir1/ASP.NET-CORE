@@ -1,0 +1,8 @@
+2023-04-27 00:32:42.819 +03:00 [INF] STARTED NEW LOGGING SESSION
+2023-04-27 00:32:44.425 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Chat" for actions - SimpleMessenger.MessengerAPI.Controllers.ChatController.Delete (SimpleMessenger.MessengerAPI),SimpleMessenger.MessengerAPI.Controllers.ChatController.ById (SimpleMessenger.MessengerAPI),SimpleMessenger.MessengerAPI.Controllers.ChatController.Yours (SimpleMessenger.MessengerAPI). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)

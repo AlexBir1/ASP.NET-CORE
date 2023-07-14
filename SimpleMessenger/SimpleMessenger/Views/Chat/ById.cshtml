@@ -1,0 +1,74 @@
+﻿@using System.Security.Claims
+@model SimpleMessenger.Shared.Chat
+
+@{
+    ViewData["Title"] = Model.FromUserByName == User.FindFirstValue(ClaimTypes.Name) ? Model.ToUserByName : Model.FromUserByName;
+}
+
+<div class="container" style="margin-top:30px">
+    <input type="hidden" id="userNameVal" value="@User.FindFirstValue(ClaimTypes.Name)" />
+    <div id="@Model.Id" class="row" style="justify-content:center">
+        <div class="col-lg-8">
+            <div class="card" style="background-color:rgb(189, 189, 189)">
+                <div id="headPanel" class="card" style="min-height:50px; margin-bottom:5px; justify-content:center">
+                    <div class="row">
+                        <div class="col-lg-3 text-center">
+                            <a asp-action="Yours" style="position:relative">
+                                <i class="bi bi-arrow-left-circle" style="font-size:30px"></i>
+                                <div class="button-tip">Back to the chats.</div>
+                            </a>
+                            <i class="bi bi-arrow-down-circle" style="font-size:30px; margin-left:5px; cursor:pointer; color: rgb(184, 138, 46); position:relative" onclick="scrollToBottom()">
+                                <label class="button-tip">Scroll to bottom.</label>
+                            </i>
+                            <a asp-action="Delete" asp-route-chatId="@Model.Id" style="position:relative">
+                                <i class="bi bi-trash3" style="font-size:30px; margin-left:5px; cursor:pointer; color: red"></i>
+                                <div class="button-tip">Delete the chat.</div>
+                            </a>
+                        </div>
+                        <div class="col-lg-9">
+                            <div id="chatToNickname" class="card font-weight-bold" style="padding: 5px; margin:10px auto 10px auto">
+                                @(Model.FromUserByName == User.FindFirstValue(ClaimTypes.Name) ? Model.ToUserByName : Model.FromUserByName)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="msgsContent" class="card" style="min-height:400px; max-height:401px; margin-bottom:5px; overflow-y:scroll; background-color:rgb(189, 189, 189); ">
+                    @if (Model.Messages is not null)
+                    {
+                        foreach (var msg in Model.Messages)
+                        {
+                            if (msg.Account_Nickname == User.FindFirstValue(ClaimTypes.Name))
+                            {
+                                <div style="display:block; margin-left:auto; margin-right:15px">
+                                    <div class="card" style="margin-bottom:10px; max-width: 200px; border: 1px solid blue; padding: 4px 4px 4px 4px">
+                                        @msg.MessageText
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div style="display:block; margin-right:auto; margin-left: 15px;">
+                                    <div class="card" style="margin-bottom:10px; max-width: 200px; border: 1px solid black; padding: 4px 4px 4px 4px">
+                                        @msg.MessageText
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+                <div class="card" style="text-align:center; margin-top:5px;">
+                    <div style="display:grid; grid-template-columns: 4fr 1fr">
+                        <div>
+                            <textarea id="txtMessage" class="form-control" rows="2" placeholder="Type your message" style="max-height:60px; min-height:60px"></textarea>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" style="margin:10px auto 10px auto" onclick="sendBtnHit('@Model.Id','@User.FindFirstValue(ClaimTypes.Name)')">
+                                Send
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

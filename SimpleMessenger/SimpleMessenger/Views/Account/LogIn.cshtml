@@ -1,0 +1,35 @@
+﻿@model SimpleMessenger.Models.LogInModel
+
+<div id="mainDiv" style="margin-top:50px">
+    <div class="row" style="justify-content:center">
+        <div class="col-lg-7">
+            <form asp-action="LogIn" method="post">
+                <div class="card">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group text-center">
+                            <label class="font-weight-bold" style="font-size:30px">Log In</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginField">Login</label>
+                            <input asp-for="Login" id="loginField" class="form-control" placeholder="Enter your login" />
+                            <span asp-validation-for="Login" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordField">Password</label>
+                            <input asp-for="Password" id="passwordField" class="form-control" placeholder="Enter your password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div asp-validation-summary="ModelOnly" class="text-danger text-center"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-primary" type="submit">Log In</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
