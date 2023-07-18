@@ -1,0 +1,36 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WalletClicker"
+        xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif" x:Class="WalletClicker.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="469" Width="494" HorizontalAlignment="Left" VerticalAlignment="Top">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Height="459" Width="494">
+        <Label Content="Wallet Clicker V2.0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Margin="285,32,0,0"/>
+        <Label Content="Номер кошелька TrustWallet" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,190,0,0"/>
+        <Label Content="Номер кошелька MetaMask" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,73,0,0"/>
+        <Label Content="Пароль кошелька TrustWallet" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,243,0,0"/>
+        <Label Content="Пароль кошелька MetaMask" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,125,0,0"/>
+        <TextBox x:Name="metaNum" TextWrapping="Wrap" Width="290" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,99,0,0" Height="21" TextChanged="metaNum_TextChanged"/>
+        <TextBox x:Name="metaPass" TextWrapping="Wrap" Width="290" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,149,0,0" Height="21" TextChanged="metaPass_TextChanged"/>
+        <TextBox x:Name="trustNum" TextWrapping="Wrap" Width="290" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,216,0,0" Height="21" TextChanged="trustNum_TextChanged"/>
+        <TextBox x:Name="trustPass" TextWrapping="Wrap" Width="290" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,269,0,0" Height="21" TextChanged="trustPass_TextChanged"/>
+        <Button x:Name="powerBtn" Content="Старт\Стоп" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="393,394,0,0" Height="25" Width="74" IsEnabled="False" Click="powerBtn_Click"/>
+        <Button x:Name="pullBtn" Content="Подтянуть&#xA; данные" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,369,0,0" Height="40" Width="81" Click="pullBtn_Click"/>
+        <Button x:Name="pushBtn" Content="Сохранить&#xA; данные" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="145,369,0,0" Height="40" Width="81" Click="pushBtn_Click" IsEnabled="False"/>
+        <Label Content="Имя юзера" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,302,0,0"/>
+        <Button x:Name="helpBtn" Content="???" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="447,39,0,0" Click="helpBtn_Click"/>
+        <TextBox x:Name="profileName" TextWrapping="Wrap" Width="162" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,328,0,0" Height="21" TextChanged="profileName_TextChanged"/>
+        <Label Content="Статус: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="324,363,0,0"/>
+        <Label x:Name="workStatus" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="375,363,0,0" FontWeight="Bold"/>
+        <Menu HorizontalAlignment="Center" VerticalAlignment="Top" Height="19" Width="474">
+            <MenuItem Header="Меню проги" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="85">
+                <MenuItem Header="Список кошелей" HorizontalAlignment="Center" VerticalAlignment="Top" Click="MenuItem_Click"/>
+                <MenuItem Header="READ_ME!!!" HorizontalAlignment="Center" VerticalAlignment="Top" Click="MenuItem_Click_1"/>
+            </MenuItem>
+        </Menu>
+        <Label x:Name="usernameL" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="118,302,0,0"/>
+    </Grid>
+</Window>

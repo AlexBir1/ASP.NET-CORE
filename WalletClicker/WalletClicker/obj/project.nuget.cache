@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Q4/x2oOkHUEYyA/qSLUJ8q6MoDBzfDnkNHVC+rapD7dn4rQSxRptWLbDNiBjvFIuoTelKtLQhrYh9OgWokghrQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ALEXBIR\\source\\repos\\WalletClicker\\WalletClicker\\WalletClicker.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ALEXBIR\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\ALEXBIR\\.nuget\\packages\\selenium.support\\4.10.0\\selenium.support.4.10.0.nupkg.sha512",
+    "C:\\Users\\ALEXBIR\\.nuget\\packages\\selenium.webdriver\\4.10.0\\selenium.webdriver.4.10.0.nupkg.sha512"
+  ],
+  "logs": []
+}
